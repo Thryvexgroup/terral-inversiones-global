@@ -278,6 +278,8 @@
     .menu-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .menu-toggle.active span:nth-child(2) { opacity: 0; }
     .menu-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .menu-toggle.scrolled { background: rgba(160,200,226,0.97); border: 1px solid rgba(66,88,114,0.35); }
+    .menu-toggle.scrolled span { background: var(--paragraph-text); }
 
     .mobile-nav {
       display: none;
@@ -291,6 +293,30 @@
       flex-direction: column;
       gap: 6px;
       box-shadow: var(--shadow-md);
+    }
+    .mobile-lang-switcher {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(66,88,114,0.15);
+    }
+    .mobile-lang-btn {
+      flex: 1;
+      padding: 0.6em 0.8em;
+      border-radius: 200px;
+      border: 1px solid rgba(66,88,114,0.3);
+      background: rgba(214,235,248,0.7);
+      color: var(--paragraph-text);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .mobile-lang-btn.active {
+      background: var(--nav-link-bg-active);
+      color: #fff;
+      border-color: var(--nav-link-bg-active);
     }
     .mobile-nav.open { display: flex; }
     .mobile-nav .nav-link {
@@ -931,7 +957,7 @@
       .why-grid { grid-template-columns: 1fr; }
 
       .proceso-grid { grid-template-columns: 1fr; }
-      .city-bg-image { display: none; }
+      .city-bg-image { width: 92%; height: 50%; min-height: 180px; opacity: 0.12; }
 
       .form-row { grid-template-columns: 1fr; }
       .contact-section { padding: 4rem 1rem; border-radius: 0; }
@@ -1000,6 +1026,10 @@
     <a href="#servicios" class="nav-link" data-i18n="nav-services">Servicios</a>
     <a href="#contacto"  class="nav-link" data-i18n="nav-contact">Contacto</a>
     <a href="#contacto"  class="btn btn-hero" style="margin-top:1rem;width:100%;justify-content:center;" data-i18n="hero-cta">Solicitar consulta</a>
+    <div class="mobile-lang-switcher">
+      <button class="mobile-lang-btn" id="mobileLangES" onclick="setLanguage('es')">ES — Español</button>
+      <button class="mobile-lang-btn" id="mobileLangEN" onclick="setLanguage('en')">EN — English</button>
+    </div>
   </nav>
 
   <main>
@@ -1495,6 +1525,14 @@
 
       // Update html lang attribute
       document.documentElement.lang = lang === 'en' ? 'en-US' : 'es-ES';
+
+      // Sync mobile lang buttons active state
+      const mES = document.getElementById('mobileLangES');
+      const mEN = document.getElementById('mobileLangEN');
+      if (mES && mEN) {
+        mES.classList.toggle('active', lang === 'es');
+        mEN.classList.toggle('active', lang === 'en');
+      }
     }
 
     // ── Language dropdown ────────────────────────────────────
@@ -1529,11 +1567,13 @@
     const navPill = document.getElementById('navPill');
     const langPillEl = langPill;
 
+    const menuToggleEl = document.getElementById('menuToggle');
     function updateNavScroll() {
       const scrolled = window.scrollY > 60;
       navLogo.classList.toggle('scrolled', scrolled);
       navPill.classList.toggle('scrolled', scrolled);
       langPillEl.classList.toggle('scrolled', scrolled);
+      menuToggleEl.classList.toggle('scrolled', scrolled);
     }
     window.addEventListener('scroll', updateNavScroll, { passive: true });
     updateNavScroll();
