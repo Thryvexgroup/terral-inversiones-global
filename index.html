@@ -173,7 +173,8 @@
       transition: background-color .35s ease, border .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
       text-decoration: none;
     }
-    .nav-logo-pill img { width: 210px; height: auto; }
+    .nav-logo-pill img { width: 210px; height: auto; transition: width .35s ease; }
+    .nav-logo-pill.scrolled img { width: 170px; }
     .nav-logo-pill.scrolled {
       border: 1px solid rgba(66,88,114,0.5);
       background-color: rgba(160, 200, 226, 0.97);
