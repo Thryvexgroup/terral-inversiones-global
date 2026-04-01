@@ -154,12 +154,12 @@
     .nav-logo-pill {
       display: flex;
       align-items: center;
-      background-color: rgba(214,235,248,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(214,235,248,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-radius: 200px;
       padding: 10px 18px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: background-color .35s ease, border .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
       text-decoration: none;
     }
@@ -176,12 +176,12 @@
       display: flex;
       align-items: center;
       gap: 2rem;
-      background-color: rgba(214,235,248,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(214,235,248,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-radius: 200px;
       padding: 18px 36px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       transition: background-color .35s ease, border .35s ease, box-shadow .35s ease, backdrop-filter .35s ease;
     }
     .nav-links-pill.scrolled {
@@ -206,12 +206,12 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      background-color: rgba(214,235,248,0.88);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(214,235,248,0.08);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-radius: 200px;
       padding: 12px 20px;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       cursor: pointer;
       font-family: var(--font-heading);
       font-size: 0.875rem;
@@ -261,10 +261,10 @@
       cursor: pointer;
       padding: 12px;
       border-radius: 200px;
-      background: #e6f4ff;
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      box-shadow: var(--shadow-sm);
+      background: rgba(214,235,248,0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       border: none;
     }
     .menu-toggle span {
@@ -971,6 +971,92 @@
       .footer-location { text-align: left; }
     }
 
+    /* ── LOADING SCREEN ─────────────────────────────────────── */
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: var(--page-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.75rem;
+      transition: opacity 0.65s ease, visibility 0.65s ease;
+    }
+    #loader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+    #loader__logo {
+      width: 200px;
+      animation: loaderPulse 1.5s ease-in-out infinite alternate;
+    }
+    #loader__bar {
+      width: 110px;
+      height: 2px;
+      background: rgba(66,88,114,0.12);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    #loader__bar::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      width: 45%;
+      background: var(--small-text);
+      border-radius: 2px;
+      animation: loaderSwipe 1.1s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes loaderPulse {
+      from { opacity: 0.45; transform: scale(0.97); }
+      to   { opacity: 1;    transform: scale(1.01); }
+    }
+    @keyframes loaderSwipe {
+      0%   { transform: translateX(-120%); }
+      100% { transform: translateX(320%); }
+    }
+
+    /* ── HERO LOAD ANIMATION ─────────────────────────────────── */
+    .hero-load {
+      opacity: 0;
+      transform: translateY(44px);
+      transition: opacity 0.9s cubic-bezier(.25,.46,.45,.94),
+                  transform 0.9s cubic-bezier(.25,.46,.45,.94);
+      will-change: opacity, transform;
+    }
+    .hero-load-d2 { transition-delay: 230ms; }
+    .hero-load.ready { opacity: 1; transform: translateY(0); }
+
+    /* ── BUTTON GLOW ─────────────────────────────────────────── */
+    .btn-consulta:hover {
+      box-shadow: 0 6px 20px rgba(91,168,216,0.5), 0 0 50px rgba(91,168,216,0.18);
+    }
+    .btn-hero:hover {
+      box-shadow: 0 8px 24px rgba(66,88,114,0.22), 0 0 30px rgba(91,168,216,0.1);
+    }
+    .btn-process:hover {
+      box-shadow: 0 4px 18px rgba(66,88,114,0.12);
+    }
+    .btn-form:hover {
+      box-shadow: 0 6px 20px rgba(66,88,114,0.18);
+    }
+
+    /* ── CUSTOM CURSOR DOT ───────────────────────────────────── */
+    #cursor-dot {
+      position: fixed;
+      width: 9px;
+      height: 9px;
+      background: rgba(66,88,114,0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-50%, -50%);
+      will-change: left, top;
+      transition: transform 0.18s cubic-bezier(.34,1.56,.64,1),
+                  background 0.2s, opacity 0.3s;
+    }
+    @media (hover: none), (pointer: coarse) { #cursor-dot { display: none; } }
+
     /* ── SMALL MOBILE (479px) ────────────────────────────────── */
     @media (max-width: 479px) {
       .nav-wrapper { margin-top: 12px; }
@@ -984,6 +1070,16 @@
   </style>
 </head>
 <body>
+
+  <!-- ══════════════════ LOADING SCREEN ══════════════════ -->
+  <div id="loader" role="status" aria-label="Cargando">
+    <img id="loader__logo"
+      src="https://cdn.prod.website-files.com/69c016157bffa9d566c4a040/69c585901898bcb4f86bb347_LOGO_TERRAL-removebg-preview.png"
+      alt="Terral Global"
+      loading="eager"
+    >
+    <div id="loader__bar"></div>
+  </div>
 
   <!-- ══════════════════ NAVIGATION ══════════════════ -->
   <div class="nav-wrapper" id="navWrapper">
@@ -1036,7 +1132,7 @@
 
     <!-- ══════════════════ HERO ══════════════════ -->
     <section class="hero-section" id="hero" aria-labelledby="hero-heading">
-      <div class="hero-content reveal">
+      <div class="hero-content hero-load">
         <h1 class="hero-heading" id="hero-heading" data-i18n="hero-title" data-i18n-html="true">
           Consultoría estratégica.<br>Impacto global.
         </h1>
@@ -1044,7 +1140,7 @@
           Optimizamos estructuras fiscales internacionales con precisión, discreción y enfoque estratégico.
         </p>
       </div>
-      <div class="hero-cta-area reveal reveal-d2">
+      <div class="hero-cta-area hero-load hero-load-d2">
         <a href="#contacto" class="btn btn-hero" data-i18n="hero-cta">Solicitar consulta</a>
       </div>
     </section>
@@ -1368,6 +1464,9 @@
     </div>
   </footer>
 
+  <!-- cursor dot -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+
   <!-- ══════════════════ JAVASCRIPT ══════════════════ -->
   <script>
     // ── Mobile menu ──────────────────────────────────────────
@@ -1665,6 +1764,79 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
     revealEls.forEach(el => observer.observe(el));
+
+    // ── Loading screen ───────────────────────────────────────
+    const loader = document.getElementById('loader');
+    window.addEventListener('load', () => {
+      loader.classList.add('fade-out');
+      setTimeout(() => {
+        document.querySelectorAll('.hero-load').forEach(el => el.classList.add('ready'));
+        loader.remove();
+      }, 700);
+    });
+    // Fallback: remove loader after 3s even if load event is slow
+    setTimeout(() => {
+      if (loader && loader.parentNode) {
+        loader.classList.add('fade-out');
+        setTimeout(() => loader.remove(), 700);
+        document.querySelectorAll('.hero-load').forEach(el => el.classList.add('ready'));
+      }
+    }, 3000);
+
+    // ── Hero parallax ────────────────────────────────────────
+    const heroEl = document.getElementById('hero');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function updateParallax() {
+      if (prefersReducedMotion || window.innerWidth < 768) return;
+      const scrollY = window.scrollY;
+      if (scrollY < heroEl.offsetHeight * 1.3) {
+        const offset = scrollY * 0.38;
+        heroEl.style.backgroundPosition = `0 0, 50% calc(50% + ${offset}px)`;
+      }
+    }
+    window.addEventListener('scroll', updateParallax, { passive: true });
+
+    // ── Service card 3D tilt ─────────────────────────────────
+    const isTouch = () => window.matchMedia('(hover: none)').matches;
+    document.querySelectorAll('.service-card').forEach(card => {
+      if (isTouch()) return;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width  - 0.5;
+        const y = (e.clientY - rect.top)  / rect.height - 0.5;
+        card.style.transform = `perspective(700px) translateY(-7px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // ── Custom cursor dot ────────────────────────────────────
+    const cursorDotEl = document.getElementById('cursor-dot');
+    if (cursorDotEl && !isTouch()) {
+      let cx = -200, cy = -200, dx = -200, dy = -200;
+      document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; });
+      document.addEventListener('mouseleave', () => { cursorDotEl.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { cursorDotEl.style.opacity = '1'; });
+      (function rafCursor() {
+        dx += (cx - dx) * 0.16;
+        dy += (cy - dy) * 0.16;
+        cursorDotEl.style.left = dx + 'px';
+        cursorDotEl.style.top  = dy + 'px';
+        requestAnimationFrame(rafCursor);
+      })();
+      // Grow + colour shift on interactive elements
+      document.querySelectorAll('a, button, .service-card, .why-card, .proceso-step').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursorDotEl.style.transform = 'translate(-50%,-50%) scale(2.8)';
+          cursorDotEl.style.background = 'rgba(91,168,216,0.45)';
+        });
+        el.addEventListener('mouseleave', () => {
+          cursorDotEl.style.transform = 'translate(-50%,-50%) scale(1)';
+          cursorDotEl.style.background = 'rgba(66,88,114,0.45)';
+        });
+      });
+    }
   </script>
 </body>
 </html>
