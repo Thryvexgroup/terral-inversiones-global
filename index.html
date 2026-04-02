@@ -1350,6 +1350,8 @@
         <div class="contact-form-card reveal reveal-d2">
           <h3 class="contact-form-title" data-i18n="form-title">Envíenos un mensaje</h3>
           <form class="form" id="contactForm" novalidate>
+            <input type="hidden" name="_subject" value="Nueva consulta desde Terral Global">
+            <input type="hidden" name="_captcha" value="false">
             <div class="form-row">
               <div class="form-group">
                 <label for="nombre" data-i18n="label-nombre">Nombre *</label>
@@ -1715,7 +1717,7 @@
     const formSuccess = document.getElementById('formSuccess');
     const formError   = document.getElementById('formError');
 
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       formSuccess.classList.remove('show');
       formError.classList.remove('show');
@@ -1731,30 +1733,30 @@
       const orig = btn.textContent;
       btn.textContent = 'Enviando…';
 
-      const d = Object.fromEntries(new FormData(contactForm).entries());
-      const bodyText = [
-        `Nombre: ${d.nombre || ''} ${d.apellidos || ''}`,
-        `Email: ${d.email || ''}`,
-        `Teléfono: ${d.telefono || ''}`,
-        d.whatsapp ? `WhatsApp: ${d.whatsapp}` : '',
-        `Tipo de cliente: ${d['tipo-cliente'] || ''}`,
-        `Método de contacto preferido: ${d['contacto-preferido'] || ''}`,
-        ``,
-        `Comentario:`,
-        d.mensaje || ''
-      ].filter((l, i, arr) => !(l === '' && arr[i - 1] === '')).join('\n');
-
-      const subject = encodeURIComponent('Nueva consulta desde Terral Global');
-      const body    = encodeURIComponent(bodyText);
-      window.open(`mailto:info@terral.global?subject=${subject}&body=${body}`);
-
-      contactForm.reset();
-      whatsappGroup.style.display = 'none';
-      btn.disabled = false;
-      btn.textContent = orig;
-      formSuccess.classList.add('show');
-      formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      setTimeout(() => formSuccess.classList.remove('show'), 6000);
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch('https://formsubmit.co/ajax/info@terral.global', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        const result = await response.json();
+        if (result.success === 'true' || result.success === true) {
+          contactForm.reset();
+          whatsappGroup.style.display = 'none';
+          btn.disabled = false;
+          btn.textContent = orig;
+          formSuccess.classList.add('show');
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          setTimeout(() => formSuccess.classList.remove('show'), 6000);
+        } else {
+          throw new Error('Error');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = orig;
+        formError.classList.add('show');
+      }
     });
 
     // ── Smooth anchor scroll (accounting for floating nav) ───
