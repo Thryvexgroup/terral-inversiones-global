@@ -1398,6 +1398,18 @@
               </div>
             </div>
             <div class="form-group">
+              <label for="contacto-preferido" data-i18n="label-contact-method">Método de contacto preferido *</label>
+              <div class="select-wrap">
+                <select id="contacto-preferido" name="contacto-preferido" required>
+                  <option value="" disabled selected data-i18n="opt-contact-default">Seleccione una opción</option>
+                  <option value="whatsapp" data-i18n="opt-contact-whatsapp">WhatsApp</option>
+                  <option value="llamada" data-i18n="opt-contact-phone">Llamada telefónica</option>
+                  <option value="email" data-i18n="opt-contact-email">Email</option>
+                  <option value="videochat" data-i18n="opt-contact-video">Videochat</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
               <label for="mensaje" data-i18n="label-mensaje">Comentario *</label>
               <textarea id="mensaje" name="mensaje" placeholder="Describa brevemente su consulta o necesidad..." data-i18n-ph="ph-mensaje" required></textarea>
             </div>
@@ -1543,6 +1555,8 @@
         'label-wa': 'Número de WhatsApp', 'label-tipo': 'Tipo de cliente *', 'label-mensaje': 'Comentario *',
         'opt-select': 'Seleccione una opción', 'opt-wa-no': 'No, usar el mismo número', 'opt-wa-si': 'Sí, añadir número diferente',
         'opt-tipo-default': 'Seleccione su perfil', 'opt-tipo-fisica': 'Persona Física', 'opt-tipo-empresa': 'Empresa',
+        'label-contact-method': 'Método de contacto preferido *',
+        'opt-contact-default': 'Seleccione una opción', 'opt-contact-whatsapp': 'WhatsApp', 'opt-contact-phone': 'Llamada telefónica', 'opt-contact-email': 'Email', 'opt-contact-video': 'Videochat',
         'ph-nombre': 'Su nombre', 'ph-apellidos': 'Sus apellidos', 'ph-email': 'correo@ejemplo.com', 'ph-mensaje': 'Describa brevemente su consulta o necesidad...',
         'btn-submit': 'Enviar',
         'form-success': '¡Gracias! Responderemos en menos de 24 horas.',
@@ -1596,6 +1610,8 @@
         'label-wa': 'WhatsApp Number', 'label-tipo': 'Client Type *', 'label-mensaje': 'Comment *',
         'opt-select': 'Select an option', 'opt-wa-no': 'No, use the same number', 'opt-wa-si': 'Yes, add a different number',
         'opt-tipo-default': 'Select your profile', 'opt-tipo-fisica': 'Individual', 'opt-tipo-empresa': 'Company',
+        'label-contact-method': 'Preferred contact method *',
+        'opt-contact-default': 'Select an option', 'opt-contact-whatsapp': 'WhatsApp', 'opt-contact-phone': 'Phone call', 'opt-contact-email': 'Email', 'opt-contact-video': 'Videochat',
         'ph-nombre': 'Your first name', 'ph-apellidos': 'Your last name', 'ph-email': 'email@example.com', 'ph-mensaje': 'Briefly describe your inquiry or need...',
         'btn-submit': 'Send',
         'form-success': 'Thank you! We will respond within 24 hours.',
