@@ -1350,8 +1350,6 @@
         <div class="contact-form-card reveal reveal-d2">
           <h3 class="contact-form-title" data-i18n="form-title">Envíenos un mensaje</h3>
           <form class="form" id="contactForm" novalidate>
-            <input type="hidden" name="_subject" value="Nueva consulta desde Terral Global">
-            <input type="hidden" name="_captcha" value="false">
             <div class="form-row">
               <div class="form-group">
                 <label for="nombre" data-i18n="label-nombre">Nombre *</label>
@@ -1735,13 +1733,17 @@
 
       try {
         const formData = new FormData(contactForm);
-        const response = await fetch('https://formsubmit.co/ajax/info@terral.global', {
+        const body = {};
+        formData.forEach((v, k) => { body[k] = v; });
+
+        const response = await fetch('/api/contact', {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
         });
         const result = await response.json();
-        if (result.success === 'true' || result.success === true) {
+
+        if (response.ok && result.success) {
           contactForm.reset();
           whatsappGroup.style.display = 'none';
           btn.disabled = false;
@@ -1750,7 +1752,7 @@
           formSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           setTimeout(() => formSuccess.classList.remove('show'), 6000);
         } else {
-          throw new Error('Error');
+          throw new Error(result.error || 'Error');
         }
       } catch (err) {
         btn.disabled = false;
