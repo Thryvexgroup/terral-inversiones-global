@@ -148,7 +148,7 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from:    'Terral Inversiones Globales <info@terral.global>',
+      from:    'Terral Inversiones Globales <noreply@thryvexgroup.com>',
       to:      'info@terral.global',
       replyTo: email,
       subject: `Nueva consulta de ${nombre} ${apellidos}`,
