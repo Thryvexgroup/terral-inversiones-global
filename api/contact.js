@@ -146,18 +146,18 @@ export default async function handler(req, res) {
 </body>
 </html>`;
 
-  try {
-    await resend.emails.send({
-      from:    'Terral Inversiones Globales <noreply@thryvexgroup.com>',
-      to:      'info@terral.global',
-      replyTo: email,
-      subject: `Nueva consulta de ${nombre} ${apellidos}`,
-      html,
-    });
+  const { data, error } = await resend.emails.send({
+    from:    'Terral Inversiones Globales <noreply@thryvexgroup.com>',
+    to:      'info@terral.global',
+    replyTo: email,
+    subject: `Nueva consulta de ${nombre} ${apellidos}`,
+    html,
+  });
 
-    return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Resend error:', error);
-    return res.status(500).json({ error: 'Failed to send email' });
+  if (error) {
+    console.error('Resend error:', JSON.stringify(error, null, 2));
+    return res.status(500).json({ error: 'Failed to send email', detail: error.message });
   }
+
+  return res.status(200).json({ success: true, id: data?.id });
 }
