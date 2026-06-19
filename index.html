@@ -201,19 +201,19 @@
 
     .nav-logo-pill {
       display: flex; align-items: center;
-      background-color: rgba(11,22,34,0.28);
+      background-color: rgba(237,231,219,0.96);
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-      border: 1px solid transparent;
+      border: 1px solid rgba(255,255,255,0.4);
       border-radius: 200px;
-      padding: 8px 18px;
+      padding: 9px 20px;
+      box-shadow: 0 8px 26px -12px rgba(0,0,0,0.55);
       transition: all .45s var(--ease);
     }
-    .nav-logo-pill img { width: 188px; height: auto; transition: width .45s var(--ease); }
-    .nav-logo-pill.scrolled img { width: 158px; }
+    .nav-logo-pill img { width: 178px; height: auto; transition: width .45s var(--ease); }
+    .nav-logo-pill.scrolled img { width: 150px; }
     .nav-logo-pill.scrolled {
-      border-color: var(--line);
-      background-color: rgba(8,17,26,0.72);
-      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-color: rgba(199,164,94,0.5);
+      background-color: #ECE7D9;
     }
 
     .nav-links-pill {
@@ -678,7 +678,7 @@
     .footer-contact a { font-family: var(--font-body); font-size: 1rem; font-weight: 300; color: var(--ivory); transition: color .3s; }
     .footer-contact a:hover { color: var(--gold-bright); }
     .footer-logo { text-align: center; }
-    .footer-logo img { width: 168px; height: auto; margin: 0 auto; opacity: 0.95; }
+    .footer-logo img { width: 158px; height: auto; margin: 0 auto; background: #ECE7D9; padding: 16px 22px; border-radius: 12px; box-shadow: 0 14px 36px -16px rgba(0,0,0,0.6); }
     .footer-location { text-align: right; }
     .footer-location p { font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; color: var(--text); line-height: 1.7; }
     .footer-bottom { display: flex; justify-content: center; }
@@ -761,7 +761,7 @@
       transition: opacity 0.7s ease, visibility 0.7s ease;
     }
     #loader.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
-    #loader__logo { width: 190px; animation: loaderPulse 1.8s ease-in-out infinite alternate; }
+    #loader__logo { width: 190px; background: #ECE7D9; padding: 20px 28px; border-radius: 16px; box-shadow: 0 20px 50px -20px rgba(0,0,0,0.6); animation: loaderPulse 1.8s ease-in-out infinite alternate; }
     #loader__bar { width: 120px; height: 1px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; position: relative; }
     #loader__bar::after { content: ''; position: absolute; top: 0; left: 0; height: 100%; width: 45%; background: var(--gold); border-radius: 2px; animation: loaderSwipe 1.2s var(--ease) infinite; }
     @keyframes loaderPulse { from { opacity: 0.5; } to { opacity: 1; } }
@@ -809,7 +809,7 @@
   <!-- ══════════════════ LOADING SCREEN ══════════════════ -->
   <div id="loader" role="status" aria-label="Cargando">
     <img id="loader__logo"
-      src="logo-light.png"
+      src="https://cdn.prod.website-files.com/69c016157bffa9d566c4a040/69c585901898bcb4f86bb347_LOGO_TERRAL-removebg-preview.png"
       alt="Terral Global"
       loading="eager"
     >
@@ -821,7 +821,7 @@
     <!-- Logo pill -->
     <a href="#hero" class="nav-logo-pill" id="navLogo">
       <img
-        src="logo-light.png"
+        src="https://cdn.prod.website-files.com/69c016157bffa9d566c4a040/69c585901898bcb4f86bb347_LOGO_TERRAL-removebg-preview.png"
         alt="Terral Global"
         loading="eager"
       >
@@ -1619,7 +1619,7 @@
         <div class="footer-logo">
           <a href="#hero" aria-label="Terral Global — Inicio">
             <img
-              src="logo-light.png"
+              src="https://cdn.prod.website-files.com/69c016157bffa9d566c4a040/69c585901898bcb4f86bb347_LOGO_TERRAL-removebg-preview.png"
               alt="Terral Global"
               loading="lazy"
             >
