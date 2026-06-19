@@ -328,67 +328,117 @@
     .mobile-nav .nav-link:hover { background: var(--surface); color: var(--gold-bright); }
     .mobile-nav .btn-hero { width: 100%; margin-top: 14px; justify-content: center; }
 
-    /* ── HERO ───────────────────────────────────────────────── */
+    /* ── HERO · editorial cartography ───────────────────────── */
+    :root { --ease-lux: cubic-bezier(.22,.61,.36,1); --dur-lux: 900ms; }
+
     .hero-section {
       position: relative;
       min-height: 100vh;
-      background-image:
-        linear-gradient(180deg, rgba(8,17,26,0.62) 0%, rgba(8,17,26,0.78) 45%, rgba(11,22,34,0.97) 100%),
-        url("https://cdn.prod.website-files.com/69c016157bffa9d566c4a040/69c583df9ff340c8ab98b3a2_BestThingsMiami-header.jpg");
-      background-position: 50% 0, 50% 50%;
-      background-repeat: no-repeat, no-repeat;
-      background-size: cover, cover;
+      background:
+        radial-gradient(125% 85% at 80% 14%, rgba(199,164,94,0.06) 0%, rgba(199,164,94,0) 50%),
+        var(--navy);
       display: flex; flex-direction: column; justify-content: center;
-      padding: 40px 42px 80px;
+      padding: 40px clamp(1.5rem, 6vw, 7rem) 96px;
       overflow: hidden;
     }
-    /* left scrim — keeps the headline crisp over any imagery */
+    /* abstract cartography layer */
+    .hero-carto {
+      position: absolute; inset: -2%;
+      z-index: 0; pointer-events: none;
+      -webkit-mask-image: linear-gradient(101deg, transparent 0%, rgba(0,0,0,0.16) 25%, #000 58%, #000 100%);
+      mask-image: linear-gradient(101deg, transparent 0%, rgba(0,0,0,0.16) 25%, #000 58%, #000 100%);
+      will-change: transform;
+    }
+    .hero-carto svg { width: 100%; height: 100%; display: block; }
+    /* readability scrim (left) */
     .hero-section::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(98deg, rgba(8,17,26,0.88) 0%, rgba(8,17,26,0.55) 36%, rgba(8,17,26,0.12) 64%, rgba(8,17,26,0) 80%);
-      pointer-events: none;
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(100deg, rgba(11,22,34,0.82) 0%, rgba(11,22,34,0.4) 34%, rgba(11,22,34,0) 62%);
     }
-    /* soft gold horizon glow */
+    /* bottom vignette to seat the layer */
     .hero-section::after {
-      content: '';
-      position: absolute; left: 50%; bottom: -42%;
-      width: 120%; height: 80%;
-      transform: translateX(-50%);
-      background: radial-gradient(ellipse at center, rgba(199,164,94,0.10) 0%, rgba(199,164,94,0) 62%);
-      pointer-events: none;
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 46%; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, rgba(8,17,26,0) 0%, rgba(8,17,26,0.62) 100%);
     }
-    .hero-content { position: relative; z-index: 2; padding-top: 90px; max-width: 1050px; }
+
+    .hero-main { position: relative; z-index: 3; width: 100%; max-width: 1180px; margin: 0 auto; }
+
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 0.95rem;
+      font-family: var(--font-ui); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2.3rem;
+    }
+    .hero-kicker::before { content: ''; width: 36px; height: 1px; background: var(--gold); opacity: 0.6; }
+
     .hero-heading {
       font-family: var(--font-display);
-      font-weight: 500;
-      color: var(--ivory);
-      line-height: 1.04;
-      letter-spacing: -0.015em;
-      max-width: 16ch;
-      margin-bottom: 1.8rem;
+      font-weight: 500; color: var(--ivory);
+      font-size: clamp(3rem, 7.2vw, 6.5rem);
+      line-height: 1.015; letter-spacing: -0.02em;
+      max-width: 17ch; margin-bottom: 2.5rem;
     }
-    .hero-heading { font-size: clamp(2.8rem, 6.5vw, 5.6rem); }
+    .hero-heading .h-line { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.04em; }
+    .hero-heading .h-line > span { display: block; }
+    .hero-heading em { font-style: italic; color: var(--gold-bright); }
+
     .hero-sub {
       font-family: var(--font-body);
-      font-size: clamp(1rem, 1.5vw, 1.22rem);
-      font-weight: 300;
-      color: var(--text);
-      max-width: 56ch;
-      line-height: 1.7;
-      margin-bottom: 2.5rem;
+      font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+      font-weight: 300; color: var(--text);
+      max-width: 44ch; line-height: 1.78; margin-bottom: 3.1rem;
     }
-    .hero-cta-area { position: relative; z-index: 2; padding-top: 1rem; }
-    /* scroll cue */
-    .hero-section .scroll-cue {
-      position: absolute; left: 42px; bottom: 34px; z-index: 2;
-      display: flex; align-items: center; gap: 0.8rem;
-      font-family: var(--font-ui); font-size: 0.66rem; letter-spacing: 0.24em;
-      text-transform: uppercase; color: var(--text-dim);
+    .hero-cta-area { position: relative; z-index: 3; }
+
+    /* understated editorial CTA */
+    .hero-cta {
+      display: inline-flex; align-items: center;
+      font-family: var(--font-ui); font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--ivory);
+      padding-bottom: 11px;
+      background-image: linear-gradient(to right, var(--gold), rgba(199,164,94,0.22));
+      background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat;
+      transition: color var(--dur-lux) var(--ease-lux);
     }
-    .hero-section .scroll-cue i { display: block; width: 46px; height: 1px; background: var(--line-strong); position: relative; overflow: hidden; }
-    .hero-section .scroll-cue i::after { content:''; position:absolute; inset:0; width:40%; background: var(--gold); animation: cueSlide 2.6s var(--ease) infinite; }
+    .hero-cta::after {
+      content: '→'; display: inline-block; margin-left: 0.95rem; color: var(--gold);
+      transition: transform var(--dur-lux) var(--ease-lux);
+    }
+    .hero-cta:hover { color: var(--gold-bright); }
+    .hero-cta:hover::after { transform: translateX(8px); }
+
+    /* baseline — navigation references */
+    .hero-baseline {
+      position: absolute; left: 0; right: 0; bottom: 32px; z-index: 3;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1.5rem, 6vw, 7rem);
+      font-family: var(--font-ui); font-size: 0.64rem; letter-spacing: 0.26em;
+      text-transform: uppercase; color: var(--text-dim); pointer-events: none;
+    }
+    .hero-baseline .scroll-cue { display: flex; align-items: center; gap: 0.8rem; }
+    .hero-baseline .scroll-cue i { display: block; width: 46px; height: 1px; background: var(--line-strong); position: relative; overflow: hidden; }
+    .hero-baseline .scroll-cue i::after { content: ''; position: absolute; inset: 0; width: 40%; background: var(--gold); animation: cueSlide 2.6s var(--ease-lux) infinite; }
+    .hero-baseline .hero-ref { color: var(--text-dim); }
     @keyframes cueSlide { 0%{transform:translateX(-110%)} 100%{transform:translateX(260%)} }
+
+    /* ── HERO REVEAL SEQUENCE · 900ms · cubic-bezier(.22,.61,.36,1) ── */
+    .hero-carto { opacity: 0; transition: opacity var(--dur-lux) var(--ease-lux); }
+    .hero-heading .h-line > span { transform: translateY(118%); transition: transform var(--dur-lux) var(--ease-lux); }
+    .hero-kicker, .hero-sub, .hero-cta-area, .hero-baseline {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity var(--dur-lux) var(--ease-lux), transform var(--dur-lux) var(--ease-lux);
+    }
+    .nav-wrapper { opacity: 0; transition: opacity var(--dur-lux) var(--ease-lux); }
+
+    body.hero-in .hero-carto { opacity: 1; }
+    body.hero-in .hero-heading .h-line:nth-child(1) > span { transform: translateY(0); transition-delay: 300ms; }
+    body.hero-in .hero-heading .h-line:nth-child(2) > span { transform: translateY(0); transition-delay: 450ms; }
+    body.hero-in .hero-heading .h-line:nth-child(3) > span { transform: translateY(0); transition-delay: 600ms; }
+    body.hero-in .hero-sub        { opacity: 1; transform: none; transition-delay: 770ms; }
+    body.hero-in .hero-cta-area   { opacity: 1; transform: none; transition-delay: 950ms; }
+    body.hero-in .hero-kicker     { opacity: 1; transform: none; transition-delay: 1150ms; }
+    body.hero-in .hero-baseline   { opacity: 1; transform: none; transition-delay: 1150ms; }
+    body.hero-in .nav-wrapper     { opacity: 1; transition-delay: 1300ms; }
 
     /* ── SECTIONS SHARED ────────────────────────────────────── */
     .section {
@@ -722,10 +772,12 @@
       .nav-lang-pill { display: none; }
       .menu-toggle { display: flex; }
 
-      .hero-section { padding: 2rem 1.25rem 4rem; min-height: 100svh; align-items: flex-start; justify-content: center; }
-      .hero-content { padding-top: 80px; }
-      .hero-sub { font-size: 1rem; }
-      .hero-section .scroll-cue { left: 1.25rem; }
+      .hero-section { padding: 6rem 1.25rem 5rem; min-height: 100svh; align-items: center; justify-content: center; }
+      .hero-heading { font-size: clamp(2.5rem, 11vw, 3.4rem); max-width: 14ch; }
+      .hero-kicker { margin-bottom: 1.6rem; font-size: 0.64rem; letter-spacing: 0.26em; }
+      .hero-sub { font-size: 1rem; max-width: 38ch; }
+      .hero-baseline { padding: 0 1.25rem; bottom: 22px; }
+      .hero-baseline .hero-ref { display: none; }
 
       .section { padding-top: 5rem; padding-bottom: 5rem; }
       .sobre-nosotros { padding: 5rem 1rem; background-attachment: scroll, scroll; }
@@ -785,8 +837,10 @@
 
     /* ── reduced motion ──────────────────────────────────────── */
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .hero-load { transition: none !important; opacity: 1 !important; transform: none !important; }
-      .hero-section .scroll-cue i::after, #loader__logo, #loader__bar::after { animation: none !important; }
+      .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
+      .hero-carto, .hero-kicker, .hero-sub, .hero-cta-area, .hero-baseline, .nav-wrapper { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .hero-heading .h-line > span { transform: none !important; transition: none !important; }
+      .hero-baseline .scroll-cue i::after, #loader__logo, #loader__bar::after { animation: none !important; }
     }
 
     /* ── SMALL MOBILE (479px) ────────────────────────────────── */
@@ -867,19 +921,89 @@
 
     <!-- ══════════════════ HERO ══════════════════ -->
     <section class="hero-section" id="hero" aria-labelledby="hero-heading">
-      <div class="hero-content hero-load">
-        <h1 class="hero-heading" id="hero-heading" data-i18n="hero-title" data-i18n-html="true">
-          Consultoría estratégica.<br>Impacto global.
-        </h1>
-        <p class="hero-sub" data-i18n="hero-sub">
-          Optimización fiscal internacional con precisión, discreción y enfoque estratégico.
-        </p>
+
+      <!-- Abstract international cartography / navigation layer -->
+      <div class="hero-carto" aria-hidden="true">
+        <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="fineGrid" width="46" height="46" patternUnits="userSpaceOnUse">
+              <path d="M46 0H0V46" fill="none" stroke="#E6ECF3" stroke-opacity="0.04" stroke-width="1"/>
+            </pattern>
+            <pattern id="majorGrid" width="230" height="230" patternUnits="userSpaceOnUse">
+              <path d="M230 0H0V230" fill="none" stroke="#E6ECF3" stroke-opacity="0.055" stroke-width="1"/>
+            </pattern>
+          </defs>
+
+          <rect width="1600" height="900" fill="url(#fineGrid)"/>
+          <rect width="1600" height="900" fill="url(#majorGrid)"/>
+
+          <!-- graticule: latitude curves -->
+          <g fill="none" stroke="#C7A45E" stroke-opacity="0.10" stroke-width="1">
+            <path d="M-40 175 C 420 120, 1180 120, 1660 195"/>
+            <path d="M-40 410 C 420 360, 1180 360, 1660 430"/>
+            <path d="M-40 645 C 420 600, 1180 600, 1660 660"/>
+          </g>
+          <!-- meridian curves: longitude -->
+          <g fill="none" stroke="#E6ECF3" stroke-opacity="0.05" stroke-width="1">
+            <path d="M1180 -40 C 1118 300, 1118 600, 1212 940"/>
+            <path d="M1410 -40 C 1356 300, 1356 600, 1452 940"/>
+          </g>
+
+          <!-- route lines: dashed great-circles -->
+          <g fill="none" stroke="#C7A45E" stroke-width="1.3" stroke-opacity="0.5" stroke-dasharray="1.5 7" stroke-linecap="round">
+            <path d="M250 660 Q 690 350 1175 250"/>
+            <path d="M1175 250 Q 1372 380 1432 612"/>
+          </g>
+
+          <!-- jurisdiction markers + coordinates -->
+          <g font-family="'Instrument Sans', sans-serif" font-size="12.5" letter-spacing="2.4" fill="#C7A45E">
+            <g transform="translate(250 660)">
+              <circle r="5.5" fill="none" stroke="#DDBE83" stroke-width="1.2"/>
+              <circle r="1.6" fill="#DDBE83"/>
+              <path d="M-13 0H-7 M7 0H13 M0 -13V-7 M0 7V13" stroke="#DDBE83" stroke-width="1"/>
+            </g>
+            <g transform="translate(1175 250)">
+              <circle r="5.5" fill="none" stroke="#DDBE83" stroke-width="1.2"/>
+              <circle r="1.6" fill="#DDBE83"/>
+              <path d="M-13 0H-7 M7 0H13 M0 -13V-7 M0 7V13" stroke="#DDBE83" stroke-width="1"/>
+              <text x="16" y="-12" fill-opacity="0.72">47°22′N 08°33′E</text>
+            </g>
+            <g transform="translate(1432 612)">
+              <circle r="5.5" fill="none" stroke="#DDBE83" stroke-width="1.2"/>
+              <circle r="1.6" fill="#DDBE83"/>
+              <text x="-152" y="4" fill-opacity="0.72">01°17′N 103°51′E</text>
+            </g>
+          </g>
+
+          <!-- registration reticle (top-right) -->
+          <g stroke="#C7A45E" stroke-opacity="0.4" stroke-width="1" fill="none">
+            <path d="M1520 70H1556 M1538 52V88"/>
+            <circle cx="1538" cy="70" r="9"/>
+          </g>
+          <!-- top edge ruler -->
+          <g stroke="#E6ECF3" stroke-opacity="0.12" stroke-width="1">
+            <path d="M120 40V52 M260 40V48 M400 40V48 M540 40V52 M680 40V48 M820 40V48 M960 40V52 M1100 40V48 M1240 40V48 M1380 40V52"/>
+          </g>
+          <!-- faint registration crosses -->
+          <g stroke="#C7A45E" stroke-opacity="0.22" stroke-width="1">
+            <path d="M120 762H140 M130 752V772"/>
+            <path d="M778 150H798 M788 140V160"/>
+          </g>
+        </svg>
       </div>
-      <div class="hero-cta-area hero-load hero-load-d2">
-        <a href="#contacto" class="btn btn-hero" data-i18n="hero-cta">Solicitar consulta</a>
+
+      <div class="hero-main">
+        <p class="hero-kicker" data-i18n="hero-kicker">Consultoría privada · Panamá</p>
+        <h1 class="hero-heading" id="hero-heading" data-i18n="hero-title" data-i18n-html="true"><span class="h-line"><span>Consultoría</span></span><span class="h-line"><span>estratégica.</span></span><span class="h-line"><span>Impacto global.</span></span></h1>
+        <p class="hero-sub" data-i18n="hero-sub">Optimización fiscal internacional con precisión, discreción y enfoque estratégico.</p>
+        <div class="hero-cta-area">
+          <a href="#contacto" class="hero-cta" data-i18n="hero-cta">Solicitar consulta</a>
+        </div>
       </div>
-      <div class="scroll-cue hero-load hero-load-d2" aria-hidden="true">
-        <i></i><span data-i18n="scroll-cue">Desplácese</span>
+
+      <div class="hero-baseline" aria-hidden="true">
+        <span class="scroll-cue"><i></i><span data-i18n="scroll-cue">Desplácese</span></span>
+        <span class="hero-ref">08°58′N · 79°31′W</span>
       </div>
     </section>
 
@@ -1693,7 +1817,8 @@
     const T = {
       es: {
         'nav-home': 'Inicio', 'nav-services': 'Servicios', 'nav-contact': 'Contacto',
-        'hero-title': 'Consultoría estratégica.<br>Impacto global.',
+        'hero-title': '<span class="h-line"><span>Consultoría</span></span><span class="h-line"><span>estratégica.</span></span><span class="h-line"><span>Impacto global.</span></span>',
+        'hero-kicker': 'Consultoría privada · Panamá',
         'hero-sub': 'Optimización fiscal internacional con precisión, discreción y enfoque estratégico.',
         'hero-cta': 'Solicitar consulta', 'scroll-cue': 'Desplácese',
         'svc-eyebrow': 'Nuestros Servicios', 'svc-heading': 'Soluciones fiscales a medida',
@@ -1748,7 +1873,8 @@
       },
       en: {
         'nav-home': 'Home', 'nav-services': 'Services', 'nav-contact': 'Contact',
-        'hero-title': 'Strategic Consulting.<br>Global Impact.',
+        'hero-title': '<span class="h-line"><span>Strategic</span></span><span class="h-line"><span>Consulting.</span></span><span class="h-line"><span>Global Impact.</span></span>',
+        'hero-kicker': 'Private advisory · Panama',
         'hero-sub': 'International tax optimization with precision, discretion and strategic focus.',
         'hero-cta': 'Request Consultation', 'scroll-cue': 'Scroll',
         'svc-eyebrow': 'Our Services', 'svc-heading': 'Tailored Tax Solutions',
@@ -2002,7 +2128,7 @@
     window.addEventListener('load', () => {
       loader.classList.add('fade-out');
       setTimeout(() => {
-        document.querySelectorAll('.hero-load').forEach(el => el.classList.add('ready'));
+        document.body.classList.add('hero-in');
         loader.remove();
       }, 700);
     });
@@ -2011,19 +2137,19 @@
       if (loader && loader.parentNode) {
         loader.classList.add('fade-out');
         setTimeout(() => loader.remove(), 700);
-        document.querySelectorAll('.hero-load').forEach(el => el.classList.add('ready'));
+        document.body.classList.add('hero-in');
       }
     }, 3000);
 
     // ── Hero parallax ────────────────────────────────────────
     const heroEl = document.getElementById('hero');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const heroCarto = document.querySelector('.hero-carto');
     function updateParallax() {
-      if (prefersReducedMotion || window.innerWidth < 768) return;
+      if (prefersReducedMotion || window.innerWidth < 768 || !heroCarto) return;
       const scrollY = window.scrollY;
       if (scrollY < heroEl.offsetHeight * 1.3) {
-        const offset = scrollY * 0.38;
-        heroEl.style.backgroundPosition = `0 0, 50% calc(50% + ${offset}px)`;
+        heroCarto.style.transform = `translate3d(0, ${scrollY * 0.14}px, 0) scale(1.02)`;
       }
     }
     window.addEventListener('scroll', updateParallax, { passive: true });
