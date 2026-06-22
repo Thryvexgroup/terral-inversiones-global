@@ -305,7 +305,9 @@ a{text-decoration:none;color:inherit;}
 .mm-cta{margin-top:1.4rem;}
 @media(max-width:860px){.nav-toggle{display:flex;}}
 .focus-inline{display:none;}
-@media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}
+@media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}.focus-detail-head{display:flex;align-items:baseline;gap:.6rem;max-width:44ch;margin:0 0 1.15rem;padding-bottom:.85rem;border-bottom:1px solid var(--line-gold);}
+.fdh-idx{font-size:.66rem;letter-spacing:.16em;color:var(--gold-br);font-weight:600;}
+.fdh-title{font-size:.95rem;font-weight:500;letter-spacing:.005em;color:var(--navy);}
 </style>
 <script type="application/ld+json">
 {
@@ -454,6 +456,7 @@ a{text-decoration:none;color:inherit;}
     </div>
     <div class="focus-detail" id="focusDetail">
       <div class="focus-detail-inner">
+        <div class="focus-detail-head"><span class="fdh-idx"></span><span class="fdh-title"></span></div>
         <p class="focus-detail-text"></p>
       </div>
     </div>
@@ -724,9 +727,9 @@ if(mapEl){const mo=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.jx[data-idx]').forEach(el=>{const dest=document.querySelector('.dest[data-idx="'+el.dataset.idx+'"]');if(!dest)return;el.addEventListener('mouseenter',()=>dest.classList.add('hl'));el.addEventListener('mouseleave',()=>dest.classList.remove('hl'));});
 
 const flist=document.querySelector('.focus-list');const fsvcs=document.querySelectorAll('.focus-svc');
-const fdetail=document.getElementById('focusDetail');const fdText=fdetail?fdetail.querySelector('.focus-detail-text'):null;
+const fdetail=document.getElementById('focusDetail');const fdText=fdetail?fdetail.querySelector('.focus-detail-text'):null;const fdhIdx=fdetail?fdetail.querySelector('.fdh-idx'):null;const fdhTitle=fdetail?fdetail.querySelector('.fdh-title'):null;
 const canHover=window.matchMedia('(hover:hover)').matches;
-function fset(sv){const key=sv.dataset.key;fsvcs.forEach(s=>s.classList.remove('active'));sv.classList.add('active');if(flist)flist.classList.add('has-active');if(fdText)fdText.textContent=T[curLang][key+'-d']||'';if(fdetail)fdetail.classList.add('show');}
+function fset(sv){const key=sv.dataset.key;fsvcs.forEach(s=>s.classList.remove('active'));sv.classList.add('active');if(flist)flist.classList.add('has-active');if(fdText)fdText.textContent=T[curLang][key+'-d']||'';var li=sv.querySelector('.focus-idx'),ll=sv.querySelector('.focus-label');if(fdhIdx&&li)fdhIdx.textContent=li.textContent;if(fdhTitle&&ll)fdhTitle.textContent=ll.textContent;if(fdetail)fdetail.classList.add('show');}
 function ftoggle(sv){if(sv.classList.contains('active')){sv.classList.remove('active');if(flist)flist.classList.remove('has-active');if(fdetail)fdetail.classList.remove('show');}else fset(sv);}
 fsvcs.forEach(sv=>{sv.addEventListener('mouseenter',()=>{if(canHover)fset(sv);});const n=sv.querySelector('.focus-name');if(n)n.addEventListener('click',()=>{canHover?fset(sv):ftoggle(sv);});});
 const navLinks=document.querySelectorAll('.nav-link');
