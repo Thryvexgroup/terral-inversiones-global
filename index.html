@@ -314,16 +314,15 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}.focus-detail-head{display:flex;align-items:baseline;gap:.6rem;max-width:44ch;margin:0 0 1.15rem;padding-bottom:.85rem;border-bottom:1px solid var(--line-gold);}
 .fdh-idx{font-size:.66rem;letter-spacing:.16em;color:var(--gold-br);font-weight:600;}
 .fdh-title{font-size:.95rem;font-weight:500;letter-spacing:.005em;color:var(--navy);}
-.why-ledger{margin-top:clamp(3rem,7vh,5rem);border-top:1px solid var(--line);}
-.why-row{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:clamp(1.5rem,4vw,4.5rem);align-items:start;padding:clamp(1.7rem,3.8vh,2.8rem) clamp(.8rem,1.5vw,1.4rem) clamp(1.7rem,3.8vh,2.8rem) 0;border-bottom:1px solid var(--line);transition:background .5s var(--ease);}
-.why-row:hover{background:linear-gradient(90deg,rgba(154,120,54,.05),rgba(154,120,54,0) 62%);}
-.why-rule{width:30px;height:2px;background:linear-gradient(90deg,var(--gold-br),var(--gold));border-radius:2px;margin:.35rem 0 1.1rem;transition:width .55s var(--ease);}
-.why-rtitle{font-family:var(--fd);font-weight:500;font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.14;letter-spacing:-.02em;color:var(--ink);margin:0;transition:color .4s var(--ease);}
-.why-rdesc{font-weight:300;font-size:clamp(1rem,1.08vw,1.1rem);line-height:1.62;color:var(--muted);max-width:52ch;margin:0;}
-.why-row:hover .why-rtitle{color:var(--navy);}
-.why-row:hover .why-rule{width:54px;}
-.why-ledger .reveal:nth-child(1){transition-delay:.04s}.why-ledger .reveal:nth-child(2){transition-delay:.11s}.why-ledger .reveal:nth-child(3){transition-delay:.18s}.why-ledger .reveal:nth-child(4){transition-delay:.25s}.why-ledger .reveal:nth-child(5){transition-delay:.32s}.why-ledger .reveal:nth-child(6){transition-delay:.39s}
-@media(max-width:760px){.why-row{grid-template-columns:1fr;gap:.9rem;padding-right:0;}.why-rule{margin-bottom:.9rem;}.why-rdesc{max-width:none;}}
+.why-grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.8rem,5vh,4.2rem) clamp(3rem,7vw,7rem);margin-top:clamp(3rem,7vh,5rem);}
+.why-cell{position:relative;}
+.why-n{display:block;font-family:var(--fd);font-size:clamp(3.4rem,4.6vw,5rem);font-weight:400;line-height:1;letter-spacing:-.03em;color:rgba(154,120,54,.07);-webkit-text-stroke:1px rgba(154,120,54,.6);margin:0 0 .9rem;transition:color .5s var(--ease);}
+.why-cell:hover .why-n{color:rgba(154,120,54,.2);}
+.why-t{font-family:var(--fd);font-weight:500;font-size:clamp(1.2rem,1.6vw,1.46rem);line-height:1.18;letter-spacing:-.015em;color:var(--ink);margin:0 0 .65rem;transition:color .4s var(--ease);}
+.why-cell:hover .why-t{color:var(--navy);}
+.why-d{font-weight:300;font-size:clamp(.98rem,1.05vw,1.06rem);line-height:1.6;color:var(--muted);max-width:42ch;margin:0;}
+.why-grid2 .reveal:nth-child(1){transition-delay:.04s}.why-grid2 .reveal:nth-child(2){transition-delay:.1s}.why-grid2 .reveal:nth-child(3){transition-delay:.16s}.why-grid2 .reveal:nth-child(4){transition-delay:.22s}.why-grid2 .reveal:nth-child(5){transition-delay:.28s}.why-grid2 .reveal:nth-child(6){transition-delay:.34s}
+@media(max-width:760px){.why-grid2{grid-template-columns:1fr;gap:2.4rem;}.why-d{max-width:none;}}
 </style>
 <script type="application/ld+json">
 {
@@ -522,48 +521,36 @@ a{text-decoration:none;color:inherit;}
   <div class="sec-num" aria-hidden="true">04</div>
   <span class="eyebrow reveal" data-i18n="why-eyebrow">Por qué Terral</span>
   <h2 class="sec-heading reveal" data-i18n="why-heading">¿Por qué Terral Inversiones Globales?</h2>
-  <div class="why-ledger">
-    <div class="why-row reveal">
-      <div class="why-rk">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-rtitle" data-i18n="why1-t">Enfoque Personalizado</h3>
-      </div>
-      <p class="why-rdesc" data-i18n="why1-d">Cada cliente recibe atención individual y soluciones diseñadas específicamente para su situación patrimonial y fiscal.</p>
+  <div class="why-grid2">
+    <div class="why-cell reveal">
+      <span class="why-n" aria-hidden="true">01</span>
+      <h3 class="why-t" data-i18n="why1-t">Enfoque Personalizado</h3>
+      <p class="why-d" data-i18n="why1-d">Cada cliente recibe atención individual y soluciones diseñadas específicamente para su situación patrimonial y fiscal.</p>
     </div>
-    <div class="why-row reveal">
-      <div class="why-rk">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-rtitle" data-i18n="why2-t">Orientación a Resultados</h3>
-      </div>
-      <p class="why-rdesc" data-i18n="why2-d">Nos comprometemos con resultados tangibles y medibles en la optimización de su carga fiscal internacional.</p>
+    <div class="why-cell reveal">
+      <span class="why-n" aria-hidden="true">02</span>
+      <h3 class="why-t" data-i18n="why2-t">Orientación a Resultados</h3>
+      <p class="why-d" data-i18n="why2-d">Nos comprometemos con resultados tangibles y medibles en la optimización de su carga fiscal internacional.</p>
     </div>
-    <div class="why-row reveal">
-      <div class="why-rk">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-rtitle" data-i18n="why3-t">Experiencia Multijurisdiccional</h3>
-      </div>
-      <p class="why-rdesc" data-i18n="why3-d">Profundo conocimiento de regímenes fiscales en más de 30 jurisdicciones internacionales estratégicas.</p>
+    <div class="why-cell reveal">
+      <span class="why-n" aria-hidden="true">03</span>
+      <h3 class="why-t" data-i18n="why3-t">Experiencia Multijurisdiccional</h3>
+      <p class="why-d" data-i18n="why3-d">Profundo conocimiento de regímenes fiscales en más de 30 jurisdicciones internacionales estratégicas.</p>
     </div>
-    <div class="why-row reveal">
-      <div class="why-rk">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-rtitle" data-i18n="why4-t">Asesoría de Alto Nivel</h3>
-      </div>
-      <p class="why-rdesc" data-i18n="why4-d">Acceso directo a especialistas senior con décadas de experiencia en fiscalidad internacional y estructuración corporativa.</p>
+    <div class="why-cell reveal">
+      <span class="why-n" aria-hidden="true">04</span>
+      <h3 class="why-t" data-i18n="why4-t">Asesoría de Alto Nivel</h3>
+      <p class="why-d" data-i18n="why4-d">Acceso directo a especialistas senior con décadas de experiencia en fiscalidad internacional y estructuración corporativa.</p>
     </div>
-    <div class="why-row reveal">
-      <div class="why-rk">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-rtitle" data-i18n="why5-t">Confidencialidad y Discreción</h3>
-      </div>
-      <p class="why-rdesc" data-i18n="why5-d">Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.</p>
+    <div class="why-cell reveal">
+      <span class="why-n" aria-hidden="true">05</span>
+      <h3 class="why-t" data-i18n="why5-t">Confidencialidad y Discreción</h3>
+      <p class="why-d" data-i18n="why5-d">Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.</p>
     </div>
-    <div class="why-row reveal">
-      <div class="why-rk">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-rtitle" data-i18n="why6-t">Soporte Integral</h3>
-      </div>
-      <p class="why-rdesc" data-i18n="why6-d">Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.</p>
+    <div class="why-cell reveal">
+      <span class="why-n" aria-hidden="true">06</span>
+      <h3 class="why-t" data-i18n="why6-t">Soporte Integral</h3>
+      <p class="why-d" data-i18n="why6-d">Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.</p>
     </div>
   </div>
 </section>
