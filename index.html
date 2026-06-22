@@ -314,18 +314,16 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}.focus-detail-head{display:flex;align-items:baseline;gap:.6rem;max-width:44ch;margin:0 0 1.15rem;padding-bottom:.85rem;border-bottom:1px solid var(--line-gold);}
 .fdh-idx{font-size:.66rem;letter-spacing:.16em;color:var(--gold-br);font-weight:600;}
 .fdh-title{font-size:.95rem;font-weight:500;letter-spacing:.005em;color:var(--navy);}
-.why-matrix{display:grid;grid-template-columns:1fr 1fr;margin-top:clamp(3rem,7vh,5rem);}
-.why-cell{position:relative;padding:clamp(2rem,4.5vh,3.2rem) clamp(2.2rem,3.5vw,3.6rem);border-top:1px solid rgba(154,120,54,.22);border-left:1px solid rgba(154,120,54,.22);transition:background .55s var(--ease);}
-.why-cell:nth-child(-n+2){border-top:none;padding-top:.2rem;}
-.why-cell:nth-child(odd){border-left:none;padding-left:0;}
-.why-cell:hover{background:linear-gradient(180deg,rgba(154,120,54,.045),rgba(154,120,54,0) 80%);}
-.why-rule{width:30px;height:2px;background:linear-gradient(90deg,var(--gold-br),var(--gold));border-radius:2px;margin:0 0 1.1rem;transition:width .5s var(--ease);}
-.why-cell:hover .why-rule{width:52px;}
-.why-ct{font-family:var(--fd);font-weight:500;font-size:clamp(1.35rem,2vw,1.8rem);line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin:0 0 .7rem;transition:color .4s var(--ease);}
-.why-cell:hover .why-ct{color:var(--navy);}
-.why-cd{font-weight:300;font-size:clamp(.98rem,1.05vw,1.08rem);line-height:1.62;color:var(--muted);max-width:42ch;margin:0;}
-.why-matrix .reveal:nth-child(1){transition-delay:.04s}.why-matrix .reveal:nth-child(2){transition-delay:.1s}.why-matrix .reveal:nth-child(3){transition-delay:.16s}.why-matrix .reveal:nth-child(4){transition-delay:.22s}.why-matrix .reveal:nth-child(5){transition-delay:.28s}.why-matrix .reveal:nth-child(6){transition-delay:.34s}
-@media(max-width:760px){.why-matrix{grid-template-columns:1fr;}.why-cell{border-left:none;padding-left:0;border-top:1px solid rgba(154,120,54,.22);padding-top:clamp(1.6rem,4vh,2.2rem);}.why-cell:first-child{border-top:none;padding-top:.2rem;}.why-cd{max-width:none;}}
+.why-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(1.1rem,1.8vw,1.7rem);margin-top:clamp(3rem,7vh,5rem);}
+.why-card{flex:1 1 300px;max-width:380px;background:rgba(255,254,251,.5);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:18px;padding:clamp(1.8rem,2.5vw,2.4rem);box-shadow:0 1px 2px rgba(28,27,23,.04);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);}
+.why-card:hover{transform:translateY(-6px);box-shadow:0 30px 58px -28px rgba(28,27,23,.24);border-color:var(--line-gold);}
+.why-chip{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:13px;border:1px solid var(--line-gold);background:rgba(154,120,54,.07);color:var(--gold-br);font-family:var(--fd);font-size:.98rem;font-weight:600;letter-spacing:.01em;margin-bottom:clamp(1.3rem,2vh,1.7rem);transition:background .45s var(--ease),border-color .45s var(--ease);}
+.why-card:hover .why-chip{background:rgba(154,120,54,.13);border-color:var(--gold-br);}
+.why-ct{font-family:var(--fd);font-weight:500;font-size:clamp(1.2rem,1.55vw,1.4rem);line-height:1.18;letter-spacing:-.018em;color:var(--ink);margin:0 0 .7rem;transition:color .4s var(--ease);}
+.why-card:hover .why-ct{color:var(--navy);}
+.why-cd{font-weight:300;font-size:clamp(.97rem,1.02vw,1.05rem);line-height:1.6;color:var(--muted);margin:0;}
+.why-cards .reveal:nth-child(1){transition-delay:.04s}.why-cards .reveal:nth-child(2){transition-delay:.1s}.why-cards .reveal:nth-child(3){transition-delay:.16s}.why-cards .reveal:nth-child(4){transition-delay:.22s}.why-cards .reveal:nth-child(5){transition-delay:.28s}.why-cards .reveal:nth-child(6){transition-delay:.34s}.why-cards .reveal:nth-child(7){transition-delay:.4s}
+@media(max-width:760px){.why-card{flex:1 1 100%;max-width:none;}}
 </style>
 <script type="application/ld+json">
 {
@@ -524,37 +522,37 @@ a{text-decoration:none;color:inherit;}
   <div class="sec-num" aria-hidden="true">04</div>
   <span class="eyebrow reveal" data-i18n="why-eyebrow">Por qué Terral</span>
   <h2 class="sec-heading reveal" data-i18n="why-heading">¿Por qué Terral Inversiones Globales?</h2>
-  <div class="why-matrix">
-    <div class="why-cell reveal">
-      <div class="why-rule" aria-hidden="true"></div>
+  <div class="why-cards">
+    <article class="why-card reveal">
+      <span class="why-chip" aria-hidden="true">01</span>
       <h3 class="why-ct" data-i18n="why1-t">Enfoque Personalizado</h3>
       <p class="why-cd" data-i18n="why1-d">Cada cliente recibe atención individual y soluciones diseñadas específicamente para su situación patrimonial y fiscal.</p>
-    </div>
-    <div class="why-cell reveal">
-      <div class="why-rule" aria-hidden="true"></div>
+    </article>
+    <article class="why-card reveal">
+      <span class="why-chip" aria-hidden="true">02</span>
       <h3 class="why-ct" data-i18n="why2-t">Orientación a Resultados</h3>
       <p class="why-cd" data-i18n="why2-d">Nos comprometemos con resultados tangibles y medibles en la optimización de su carga fiscal internacional.</p>
-    </div>
-    <div class="why-cell reveal">
-      <div class="why-rule" aria-hidden="true"></div>
+    </article>
+    <article class="why-card reveal">
+      <span class="why-chip" aria-hidden="true">03</span>
       <h3 class="why-ct" data-i18n="why3-t">Experiencia Multijurisdiccional</h3>
       <p class="why-cd" data-i18n="why3-d">Profundo conocimiento de regímenes fiscales en más de 30 jurisdicciones internacionales estratégicas.</p>
-    </div>
-    <div class="why-cell reveal">
-      <div class="why-rule" aria-hidden="true"></div>
+    </article>
+    <article class="why-card reveal">
+      <span class="why-chip" aria-hidden="true">04</span>
       <h3 class="why-ct" data-i18n="why4-t">Asesoría de Alto Nivel</h3>
       <p class="why-cd" data-i18n="why4-d">Acceso directo a especialistas senior con décadas de experiencia en fiscalidad internacional y estructuración corporativa.</p>
-    </div>
-    <div class="why-cell reveal">
-      <div class="why-rule" aria-hidden="true"></div>
+    </article>
+    <article class="why-card reveal">
+      <span class="why-chip" aria-hidden="true">05</span>
       <h3 class="why-ct" data-i18n="why5-t">Confidencialidad y Discreción</h3>
       <p class="why-cd" data-i18n="why5-d">Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.</p>
-    </div>
-    <div class="why-cell reveal">
-      <div class="why-rule" aria-hidden="true"></div>
+    </article>
+    <article class="why-card reveal">
+      <span class="why-chip" aria-hidden="true">06</span>
       <h3 class="why-ct" data-i18n="why6-t">Soporte Integral</h3>
       <p class="why-cd" data-i18n="why6-d">Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.</p>
-    </div>
+    </article>
   </div>
 </section>
 
