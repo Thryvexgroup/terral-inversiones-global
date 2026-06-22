@@ -317,7 +317,7 @@ a{text-decoration:none;color:inherit;}
 .why-carousel{margin-top:clamp(2.6rem,6vh,4.5rem);}
 .why-stage{position:relative;height:clamp(330px,44vh,390px);}
 .wc-card{position:absolute;top:0;left:50%;width:min(440px,84vw);height:100%;box-sizing:border-box;background:rgba(255,254,251,.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:22px;padding:clamp(1.9rem,3vw,2.7rem);display:flex;flex-direction:column;cursor:pointer;transform:translateX(-50%);transition:transform .6s var(--ease),opacity .6s var(--ease),box-shadow .6s var(--ease),background .6s var(--ease),border-color .6s var(--ease);will-change:transform,opacity;}
-.wc-card.active{background:rgba(255,254,251,.62);box-shadow:0 42px 92px -38px rgba(28,27,23,.42);border-color:rgba(154,120,54,.3);cursor:default;}
+.wc-card.active{background:rgba(255,254,251,.55);box-shadow:0 34px 80px -40px rgba(28,27,23,.34);border-color:rgba(154,120,54,.28);cursor:default;}
 .wc-idx{font-family:var(--fu);font-size:.72rem;font-weight:600;letter-spacing:.22em;color:var(--gold-br);margin-bottom:clamp(1.5rem,3.5vh,2.2rem);}
 .wc-title{font-family:var(--fd);font-weight:500;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.12;letter-spacing:-.02em;color:var(--ink);margin:0 0 .9rem;}
 .wc-desc{font-weight:300;font-size:clamp(1rem,1.1vw,1.12rem);line-height:1.6;color:var(--muted);margin:0;}
@@ -835,13 +835,21 @@ setTimeout(()=>document.querySelectorAll('.hero .reveal').forEach(el=>el.classLi
   var dotsWrap=document.getElementById('whyDots'); var active=Math.floor((cards.length-1)/2);
   cards.forEach(function(c,i){var b=document.createElement('button');b.className='wc-dot';b.type='button';b.setAttribute('aria-label','Ir a '+(i+1));b.addEventListener('click',function(){go(i);});dotsWrap.appendChild(b);});
   var dots=[].slice.call(dotsWrap.children);
+  var n=cards.length;
+  function place(c,d){
+    var ad=Math.abs(d);
+    var tx=d*48, sc=ad===0?1:Math.max(.76,.86-(ad-1)*.06), op=ad===0?1:(ad===1?.4:(ad===2?.13:0));
+    c.style.transform='translateX(-50%) translateX('+tx+'%) scale('+sc+')';
+    c.style.opacity=op; c.style.zIndex=String(50-ad); c.style.pointerEvents=ad<=1?'auto':'none';
+    c.classList.toggle('active',ad===0);
+  }
   function layout(){
     cards.forEach(function(c,i){
-      var d=i-active, ad=Math.abs(d);
-      var tx=d*48, sc=ad===0?1:Math.max(.76,.86-(ad-1)*.06), op=ad===0?1:(ad===1?.4:(ad===2?.13:0));
-      c.style.transform='translateX(-50%) translateX('+tx+'%) scale('+sc+')';
-      c.style.opacity=op; c.style.zIndex=String(50-ad); c.style.pointerEvents=ad<=1?'auto':'none';
-      c.classList.toggle('active',ad===0);
+      var raw=i-active, d=((raw%n)+n)%n; if(d>n/2) d-=n;
+      var pd=c._d;
+      if(pd!==undefined && Math.abs(d-pd)>n/2){ c.style.transition='none'; place(c,d); void c.offsetWidth; c.style.transition=''; }
+      else place(c,d);
+      c._d=d;
     });
     dots.forEach(function(dt,i){dt.classList.toggle('active',i===active);});
   }
