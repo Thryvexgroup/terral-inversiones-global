@@ -314,16 +314,21 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}.focus-detail-head{display:flex;align-items:baseline;gap:.6rem;max-width:44ch;margin:0 0 1.15rem;padding-bottom:.85rem;border-bottom:1px solid var(--line-gold);}
 .fdh-idx{font-size:.66rem;letter-spacing:.16em;color:var(--gold-br);font-weight:600;}
 .fdh-title{font-size:.95rem;font-weight:500;letter-spacing:.005em;color:var(--navy);}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(2.6rem,4.5vw,4rem) clamp(2.5rem,5vw,5.5rem);margin-top:clamp(3rem,8vh,5.5rem);}
-.why-item{position:relative;}
-.why-rule{width:32px;height:2px;background:linear-gradient(90deg,var(--gold-br),var(--gold));border-radius:2px;margin:0 0 1.4rem;transition:width .55s var(--ease);}
-.why-title{font-family:var(--fd);font-weight:500;font-size:clamp(1.18rem,1.6vw,1.42rem);line-height:1.2;letter-spacing:-.015em;color:var(--ink);margin:0 0 .75rem;transition:color .4s var(--ease);}
-.why-desc{font-weight:300;font-size:clamp(.96rem,1.02vw,1.04rem);line-height:1.62;color:var(--muted);max-width:36ch;margin:0;}
-.why-item:hover .why-rule{width:52px;}
+.why-split{display:grid;grid-template-columns:minmax(280px,.82fr) 1.18fr;gap:clamp(2.4rem,5vw,5rem);margin-top:clamp(3rem,7vh,5rem);align-items:stretch;}
+.why-figure{position:relative;overflow:hidden;border-radius:3px;min-height:440px;box-shadow:0 26px 60px -30px rgba(28,27,23,.45);}
+.why-figure img{width:100%;height:100%;object-fit:cover;object-position:50% 36%;display:block;filter:contrast(1.03) saturate(.96);}
+.why-figure::after{content:"";position:absolute;inset:0;border-radius:3px;box-shadow:inset 0 0 0 1px rgba(28,27,23,.1);pointer-events:none;}
+.why-list{display:flex;flex-direction:column;justify-content:center;}
+.why-item{position:relative;padding:clamp(1.05rem,2.4vh,1.6rem) 0;border-top:1px solid rgba(28,27,23,.08);}
+.why-item:first-child{border-top:none;padding-top:0;}
+.why-item:last-child{padding-bottom:0;}
+.why-rule{width:30px;height:2px;background:linear-gradient(90deg,var(--gold-br),var(--gold));border-radius:2px;margin:0 0 1rem;transition:width .55s var(--ease);}
+.why-title{font-family:var(--fd);font-weight:500;font-size:clamp(1.16rem,1.5vw,1.4rem);line-height:1.2;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem;transition:color .4s var(--ease);}
+.why-desc{font-weight:300;font-size:clamp(.96rem,1.02vw,1.04rem);line-height:1.6;color:var(--muted);max-width:52ch;margin:0;}
+.why-item:hover .why-rule{width:50px;}
 .why-item:hover .why-title{color:var(--navy);}
-.why-grid .reveal:nth-child(1){transition-delay:.04s}.why-grid .reveal:nth-child(2){transition-delay:.12s}.why-grid .reveal:nth-child(3){transition-delay:.2s}.why-grid .reveal:nth-child(4){transition-delay:.28s}.why-grid .reveal:nth-child(5){transition-delay:.36s}.why-grid .reveal:nth-child(6){transition-delay:.44s}
-@media(max-width:980px){.why-grid{grid-template-columns:repeat(2,1fr);gap:2.6rem 3rem;}}
-@media(max-width:600px){.why-grid{grid-template-columns:1fr;gap:2.2rem;}.why-desc{max-width:none;}}
+.why-list .reveal:nth-child(1){transition-delay:.05s}.why-list .reveal:nth-child(2){transition-delay:.12s}.why-list .reveal:nth-child(3){transition-delay:.19s}.why-list .reveal:nth-child(4){transition-delay:.26s}.why-list .reveal:nth-child(5){transition-delay:.33s}.why-list .reveal:nth-child(6){transition-delay:.4s}
+@media(max-width:860px){.why-split{grid-template-columns:1fr;gap:2rem;}.why-figure{min-height:280px;max-height:400px;}}
 </style>
 <script type="application/ld+json">
 {
@@ -522,38 +527,41 @@ a{text-decoration:none;color:inherit;}
   <div class="sec-num" aria-hidden="true">04</div>
   <span class="eyebrow reveal" data-i18n="why-eyebrow">Por qué Terral</span>
   <h2 class="sec-heading reveal" data-i18n="why-heading">¿Por qué Terral Inversiones Globales?</h2>
-  <div class="why-grid">
-      <div class="why-item reveal">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-title" data-i18n="why1-t">Enfoque Personalizado</h3>
-        <p class="why-desc" data-i18n="why1-d">Cada cliente recibe atención individual y soluciones diseñadas específicamente para su situación patrimonial y fiscal.</p>
+  <div class="why-split">
+    <div class="why-figure reveal" aria-hidden="true"><img src="passport-page.webp" alt="" loading="lazy"></div>
+    <div class="why-list">
+        <div class="why-item reveal">
+          <div class="why-rule" aria-hidden="true"></div>
+          <h3 class="why-title" data-i18n="why1-t">Enfoque Personalizado</h3>
+          <p class="why-desc" data-i18n="why1-d">Cada cliente recibe atención individual y soluciones diseñadas específicamente para su situación patrimonial y fiscal.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-rule" aria-hidden="true"></div>
+          <h3 class="why-title" data-i18n="why2-t">Orientación a Resultados</h3>
+          <p class="why-desc" data-i18n="why2-d">Nos comprometemos con resultados tangibles y medibles en la optimización de su carga fiscal internacional.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-rule" aria-hidden="true"></div>
+          <h3 class="why-title" data-i18n="why3-t">Experiencia Multijurisdiccional</h3>
+          <p class="why-desc" data-i18n="why3-d">Profundo conocimiento de regímenes fiscales en más de 30 jurisdicciones internacionales estratégicas.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-rule" aria-hidden="true"></div>
+          <h3 class="why-title" data-i18n="why4-t">Asesoría de Alto Nivel</h3>
+          <p class="why-desc" data-i18n="why4-d">Acceso directo a especialistas senior con décadas de experiencia en fiscalidad internacional y estructuración corporativa.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-rule" aria-hidden="true"></div>
+          <h3 class="why-title" data-i18n="why5-t">Confidencialidad y Discreción</h3>
+          <p class="why-desc" data-i18n="why5-d">Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-rule" aria-hidden="true"></div>
+          <h3 class="why-title" data-i18n="why6-t">Soporte Integral</h3>
+          <p class="why-desc" data-i18n="why6-d">Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.</p>
+        </div>
       </div>
-      <div class="why-item reveal">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-title" data-i18n="why2-t">Orientación a Resultados</h3>
-        <p class="why-desc" data-i18n="why2-d">Nos comprometemos con resultados tangibles y medibles en la optimización de su carga fiscal internacional.</p>
-      </div>
-      <div class="why-item reveal">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-title" data-i18n="why3-t">Experiencia Multijurisdiccional</h3>
-        <p class="why-desc" data-i18n="why3-d">Profundo conocimiento de regímenes fiscales en más de 30 jurisdicciones internacionales estratégicas.</p>
-      </div>
-      <div class="why-item reveal">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-title" data-i18n="why4-t">Asesoría de Alto Nivel</h3>
-        <p class="why-desc" data-i18n="why4-d">Acceso directo a especialistas senior con décadas de experiencia en fiscalidad internacional y estructuración corporativa.</p>
-      </div>
-      <div class="why-item reveal">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-title" data-i18n="why5-t">Confidencialidad y Discreción</h3>
-        <p class="why-desc" data-i18n="why5-d">Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.</p>
-      </div>
-      <div class="why-item reveal">
-        <div class="why-rule" aria-hidden="true"></div>
-        <h3 class="why-title" data-i18n="why6-t">Soporte Integral</h3>
-        <p class="why-desc" data-i18n="why6-d">Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.</p>
-      </div>
-    </div>
+  </div>
 </section>
 
 <section class="section contacto" id="contacto">
