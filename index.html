@@ -197,7 +197,7 @@ a{text-decoration:none;color:inherit;}
 .focus-detail{position:relative;padding-top:.5rem;min-height:7rem;}
 .focus-detail-inner{opacity:0;transform:translateY(8px);transition:opacity .4s var(--ease),transform .4s var(--ease);}
 .focus-detail.show .focus-detail-inner{opacity:1;transform:none;}
-.focus-detail-text{font-weight:300;font-size:clamp(1.05rem,1.3vw,1.25rem);line-height:1.62;color:var(--muted);max-width:42ch;margin:0 0 1.5rem;}
+.focus-detail-text{font-weight:300;font-size:clamp(1rem,1.15vw,1.18rem);line-height:1.62;color:var(--muted);max-width:44ch;margin:0;}
 .focus-detail-more{display:inline-flex;align-items:center;gap:.5rem;background:none;border:none;cursor:pointer;padding:0;font-family:var(--fu);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);}
 .focus-detail-more .fm-arr{transition:transform .4s var(--ease);}
 .focus-detail-more:hover .fm-arr{transform:translateX(4px);}
@@ -304,6 +304,8 @@ a{text-decoration:none;color:inherit;}
 .mm-link:hover,.mm-link:active{color:var(--navy);}
 .mm-cta{margin-top:1.4rem;}
 @media(max-width:860px){.nav-toggle{display:flex;}}
+.focus-inline{display:none;}
+@media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}
 </style>
 <script type="application/ld+json">
 {
@@ -426,44 +428,37 @@ a{text-decoration:none;color:inherit;}
           <span class="focus-idx">01</span>
           <span class="focus-label" data-i18n="svc1-title">Estructuración Corporativa</span>
         </button>
+        <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc1-d">Constituimos las estructuras societarias que protegen su patrimonio y reducen su carga fiscal en operaciones internacionales. Holdings, sociedades vehículo (SPV) y fundaciones diseñadas para blindar activos y facilitar la sucesión.</p></div></div>
       </div>
       <div class="focus-svc" data-key="svc2">
         <button class="focus-name" type="button">
           <span class="focus-idx">02</span>
           <span class="focus-label" data-i18n="svc2-title">Asesoramiento Transfronterizo</span>
         </button>
+        <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc2-d">Evite la doble imposición y los riesgos regulatorios al invertir fuera de su país. Coordinamos la fiscalidad entre jurisdicciones para que ninguna inversión pague de más.</p></div></div>
       </div>
       <div class="focus-svc" data-key="svc3">
         <button class="focus-name" type="button">
           <span class="focus-idx">03</span>
           <span class="focus-label" data-i18n="svc3-title">Consultoría Estratégica Global</span>
         </button>
+        <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc3-d">Decisiones de inversión con visión fiscal desde el primer euro. Alineamos dónde invierte, cómo lo estructura y dónde tributa para maximizar su rentabilidad neta.</p></div></div>
       </div>
       <div class="focus-svc" data-key="svc4">
         <button class="focus-name" type="button">
           <span class="focus-idx">04</span>
           <span class="focus-label" data-i18n="svc4-title">Optimización Fiscal Internacional</span>
         </button>
+        <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc4-d">Diseño legal de estrategias para reducir su carga fiscal mediante estructuras eficientes y plenamente conformes con la normativa de cada jurisdicción. Optimización, nunca evasión.</p></div></div>
       </div>
     </div>
     <div class="focus-detail" id="focusDetail">
       <div class="focus-detail-inner">
         <p class="focus-detail-text"></p>
-        <button class="focus-detail-more" type="button"><span data-i18n="read-more">Leer más</span> <span class="fm-arr" aria-hidden="true">&rarr;</span></button>
       </div>
     </div>
   </div>
   <div class="svc-cta reveal"><a href="#contacto" class="cta-pill"><span data-i18n="cta">Hablemos</span> <span class="a" aria-hidden="true">&rarr;</span></a></div>
-  <div class="svc-modal" id="svcModal" aria-hidden="true">
-    <div class="svc-modal-bg"></div>
-    <div class="svc-modal-box" role="dialog" aria-modal="true">
-      <button class="svc-modal-x" type="button" aria-label="Cerrar">&times;</button>
-      <h3 class="svc-modal-title"></h3>
-      <p class="svc-modal-text"></p>
-      <div class="svc-modal-tags"></div>
-      <div class="svc-modal-juris"></div>
-    </div>
-  </div>
 </section>
 <section class="section proceso" id="proceso">
   <div class="sec-num" aria-hidden="true">03</div>
@@ -712,7 +707,7 @@ const T = {
       }
     };
 
-const EXTRA={es:{'brand-sub':'Inversiones Globales','hero-kicker':'Consultoría privada','hero-title':'Estructuras que protegen su patrimonio y maximizan su <em>rentabilidad neta.</em>','hero-sub':'Diseñamos estructuras internacionales legales y eficientes para que su patrimonio y sus inversiones, especialmente inmobiliarias, rindan más después de impuestos. Con precisión, discreción y enfoque estratégico.','reach-from':'Panamá','reach-to':'Global','hero-foot-r':'Estrategia y discreción','cta':'Hablemos','map-eyebrow':'Presencia global','map-h':'Desde Panamá, hacia <em>cada jurisdicción.</em>','map-statement':'No tenemos una oficina en cada país, porque nuestros clientes no necesitan un soporte de nueve a cinco, sino una <em>atención personalizada</em> que los acompaña a través de cada frontera.','svc-juris-label':'Alcance','svc1-d':'Estructuras corporativas internacionales que combinan eficiencia fiscal y protección patrimonial duradera.','svc2-d':'Coordinación de su presencia en múltiples jurisdicciones, alineando estrategia y cumplimiento a escala global.','svc3-d':'Acompañamiento en las decisiones que definen su patrimonio, con criterio internacional y visión a largo plazo.','svc4-d':'Reducción de la carga fiscal mediante estructuras legítimas, eficientes y plenamente conformes.','read-more':'Leer más','proc-eyebrow':'Nuestro Proceso','proc-h':'De la primera conversación a la ejecución.','f-nav':'Navegación','f-contact':'Contacto','f-legal':'Legal','f-desc':'Consultoría fiscal y corporativa internacional, con discreción y alcance global.','f-privacy':'Política de Privacidad','f-terms':'Términos y Condiciones','f-copy':'© 2026 Terral Inversiones Globales. Todos los derechos reservados.','f-tag':'Discreción absoluta','f-loc':'Ciudad de Panamá, Panamá','nav-process':'Proceso','f-reach':'Alcance Global','c1':'UAE','c2':'Hong Kong','c3':'Singapur','c4':'Suiza','c5':'Luxemburgo','c6':'Londres','c7':'Islas Vírgenes','c8':'Barbados','c9':'Caimán','about-lead':'Estructuras eficientes para patrimonios e inversiones globales, con <em>discreción absoluta.</em>','pr-1-label':'La firma','pr-2-label':'El método','pr-3-label':'El alcance','about-close':'Nuestro único objetivo es que su patrimonio <em>crezca más y tribute mejor</em>, hoy y para las próximas generaciones.','acc-sum-1':'Consultoría fiscal y corporativa internacional, con discreción absoluta.','acc-sum-2':'Un número reducido de patrimonios; soluciones diseñadas a medida.','acc-sum-3':'Base en Ciudad de Panamá, operación multijurisdiccional.'},en:{'brand-sub':'Inversiones Globales','hero-kicker':'Private advisory','hero-title':'Structures that protect your wealth and maximize your <em>net returns.</em>','hero-sub':'We design legal, efficient international structures so your wealth and investments \u2014 especially real estate \u2014 yield more after tax. With precision, discretion and strategic focus.','reach-from':'Panama','reach-to':'Worldwide','hero-foot-r':'Strategy & discretion','cta':"Let's talk",'map-eyebrow':'Global presence','map-h':'From Panama, to <em>every jurisdiction.</em>','map-statement':"We don't have an office in every country, because our clients don't need nine-to-five support — they need <em>personalized attention</em> that travels with them across every border.",'svc-juris-label':'Reach','svc1-d':'International corporate structures that combine tax efficiency with lasting asset protection.','svc2-d':'Coordinating your presence across multiple jurisdictions, aligning strategy and compliance on a global scale.','svc3-d':'Guidance on the decisions that shape your wealth, with international judgment and a long-term view.','svc4-d':'Reducing tax exposure through legitimate, efficient and fully compliant structures.','read-more':'Read more','proc-eyebrow':'Our Process','proc-h':'From the first conversation to execution.','f-nav':'Navigation','f-contact':'Contact','f-legal':'Legal','f-desc':'International tax and corporate advisory, with discretion and global reach.','f-privacy':'Privacy Policy','f-terms':'Terms & Conditions','f-copy':'© 2026 Terral Inversiones Globales. All rights reserved.','f-tag':'Absolute discretion','f-loc':'Panama City, Panama','nav-process':'Process','f-reach':'Worldwide reach','c1':'UAE','c2':'Hong Kong','c3':'Singapore','c4':'Switzerland','c5':'Luxembourg','c6':'London','c7':'BVI','c8':'Barbados','c9':'Cayman','about-lead':'Efficient structures for global wealth and investment, with <em>absolute discretion.</em>','pr-1-label':'The firm','pr-2-label':'The method','pr-3-label':'The reach','about-close':'Our sole objective: that your wealth <em>grows more and is taxed more efficiently</em>, today and for generations to come.','acc-sum-1':'International tax and corporate advisory, with absolute discretion.','acc-sum-2':'A select few estates; solutions designed to measure.','acc-sum-3':'Based in Panama, operating across jurisdictions.'}};
+const EXTRA={es:{'brand-sub':'Inversiones Globales','hero-kicker':'Consultoría privada','hero-title':'Estructuras que protegen su patrimonio y maximizan su <em>rentabilidad neta.</em>','hero-sub':'Diseñamos estructuras internacionales legales y eficientes para que su patrimonio y sus inversiones, especialmente inmobiliarias, rindan más después de impuestos. Con precisión, discreción y enfoque estratégico.','reach-from':'Panamá','reach-to':'Global','hero-foot-r':'Estrategia y discreción','cta':'Hablemos','map-eyebrow':'Presencia global','map-h':'Desde Panamá, hacia <em>cada jurisdicción.</em>','map-statement':'No tenemos una oficina en cada país, porque nuestros clientes no necesitan un soporte de nueve a cinco, sino una <em>atención personalizada</em> que los acompaña a través de cada frontera.','svc-juris-label':'Alcance','svc1-d':'Constituimos las estructuras societarias que protegen su patrimonio y reducen su carga fiscal en operaciones internacionales. Holdings, sociedades vehículo (SPV) y fundaciones diseñadas para blindar activos y facilitar la sucesión.','svc2-d':'Evite la doble imposición y los riesgos regulatorios al invertir fuera de su país. Coordinamos la fiscalidad entre jurisdicciones para que ninguna inversión pague de más.','svc3-d':'Decisiones de inversión con visión fiscal desde el primer euro. Alineamos dónde invierte, cómo lo estructura y dónde tributa para maximizar su rentabilidad neta.','svc4-d':'Diseño legal de estrategias para reducir su carga fiscal mediante estructuras eficientes y plenamente conformes con la normativa de cada jurisdicción. Optimización, nunca evasión.','read-more':'Leer más','proc-eyebrow':'Nuestro Proceso','proc-h':'De la primera conversación a la ejecución.','f-nav':'Navegación','f-contact':'Contacto','f-legal':'Legal','f-desc':'Consultoría fiscal y corporativa internacional, con discreción y alcance global.','f-privacy':'Política de Privacidad','f-terms':'Términos y Condiciones','f-copy':'© 2026 Terral Inversiones Globales. Todos los derechos reservados.','f-tag':'Discreción absoluta','f-loc':'Ciudad de Panamá, Panamá','nav-process':'Proceso','f-reach':'Alcance Global','c1':'UAE','c2':'Hong Kong','c3':'Singapur','c4':'Suiza','c5':'Luxemburgo','c6':'Londres','c7':'Islas Vírgenes','c8':'Barbados','c9':'Caimán','about-lead':'Estructuras eficientes para patrimonios e inversiones globales, con <em>discreción absoluta.</em>','pr-1-label':'La firma','pr-2-label':'El método','pr-3-label':'El alcance','about-close':'Nuestro único objetivo es que su patrimonio <em>crezca más y tribute mejor</em>, hoy y para las próximas generaciones.','acc-sum-1':'Consultoría fiscal y corporativa internacional, con discreción absoluta.','acc-sum-2':'Un número reducido de patrimonios; soluciones diseñadas a medida.','acc-sum-3':'Base en Ciudad de Panamá, operación multijurisdiccional.'},en:{'brand-sub':'Inversiones Globales','hero-kicker':'Private advisory','hero-title':'Structures that protect your wealth and maximize your <em>net returns.</em>','hero-sub':'We design legal, efficient international structures so your wealth and investments \u2014 especially real estate \u2014 yield more after tax. With precision, discretion and strategic focus.','reach-from':'Panama','reach-to':'Worldwide','hero-foot-r':'Strategy & discretion','cta':"Let's talk",'map-eyebrow':'Global presence','map-h':'From Panama, to <em>every jurisdiction.</em>','map-statement':"We don't have an office in every country, because our clients don't need nine-to-five support — they need <em>personalized attention</em> that travels with them across every border.",'svc-juris-label':'Reach','svc1-d':'We set up the corporate structures that protect your wealth and reduce your tax burden on international operations — holdings, special-purpose vehicles (SPVs) and foundations designed to shield assets and ease succession.','svc2-d':'Avoid double taxation and regulatory risk when investing outside your country. We coordinate taxation across jurisdictions so no investment ever pays more than it should.','svc3-d':'Investment decisions with a tax lens from the very first euro. We align where you invest, how you structure it and where you are taxed to maximize your net returns.','svc4-d':'Legal design of strategies to reduce your tax burden through efficient structures, fully compliant with each jurisdiction’s rules. Optimization, never evasion.','read-more':'Read more','proc-eyebrow':'Our Process','proc-h':'From the first conversation to execution.','f-nav':'Navigation','f-contact':'Contact','f-legal':'Legal','f-desc':'International tax and corporate advisory, with discretion and global reach.','f-privacy':'Privacy Policy','f-terms':'Terms & Conditions','f-copy':'© 2026 Terral Inversiones Globales. All rights reserved.','f-tag':'Absolute discretion','f-loc':'Panama City, Panama','nav-process':'Process','f-reach':'Worldwide reach','c1':'UAE','c2':'Hong Kong','c3':'Singapore','c4':'Switzerland','c5':'Luxembourg','c6':'London','c7':'BVI','c8':'Barbados','c9':'Cayman','about-lead':'Efficient structures for global wealth and investment, with <em>absolute discretion.</em>','pr-1-label':'The firm','pr-2-label':'The method','pr-3-label':'The reach','about-close':'Our sole objective: that your wealth <em>grows more and is taxed more efficiently</em>, today and for generations to come.','acc-sum-1':'International tax and corporate advisory, with absolute discretion.','acc-sum-2':'A select few estates; solutions designed to measure.','acc-sum-3':'Based in Panama, operating across jurisdictions.'}};
 Object.assign(T.es,EXTRA.es);Object.assign(T.en,EXTRA.en);
 const langLabel=document.getElementById('langLabel');
 let curLang='es';
@@ -729,14 +724,11 @@ if(mapEl){const mo=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.jx[data-idx]').forEach(el=>{const dest=document.querySelector('.dest[data-idx="'+el.dataset.idx+'"]');if(!dest)return;el.addEventListener('mouseenter',()=>dest.classList.add('hl'));el.addEventListener('mouseleave',()=>dest.classList.remove('hl'));});
 
 const flist=document.querySelector('.focus-list');const fsvcs=document.querySelectorAll('.focus-svc');
-const fdetail=document.getElementById('focusDetail');const fdText=fdetail?fdetail.querySelector('.focus-detail-text'):null;const fdMore=fdetail?fdetail.querySelector('.focus-detail-more'):null;let fdKey=null;
-const svcModal=document.getElementById('svcModal');
-function openSvc(key){const d=T[curLang];const q=svcModal.querySelector.bind(svcModal);q('.svc-modal-title').textContent=d[key+'-title']||'';q('.svc-modal-text').textContent=d[key+'-text']||'';q('.svc-modal-tags').textContent=d[key+'-tags']||'';q('.svc-modal-juris').innerHTML='<span>'+(d['svc-juris-label']||'')+'</span>'+(d[key+'-juris']||'');svcModal.classList.add('open');svcModal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';if(lenis)lenis.stop();}
-function closeSvc(){svcModal.classList.remove('open');svcModal.setAttribute('aria-hidden','true');document.body.style.overflow='';if(lenis)lenis.start();}
-function fset(sv){const key=sv.dataset.key;fsvcs.forEach(s=>s.classList.remove('active'));sv.classList.add('active');if(flist)flist.classList.add('has-active');fdKey=key;if(fdText)fdText.textContent=T[curLang][key+'-d']||'';if(fdetail)fdetail.classList.add('show');}
-fsvcs.forEach(sv=>{const key=sv.dataset.key;sv.addEventListener('mouseenter',()=>fset(sv));const n=sv.querySelector('.focus-name');if(n)n.addEventListener('click',()=>openSvc(key));});
-if(fdMore)fdMore.addEventListener('click',()=>{if(fdKey)openSvc(fdKey);});
-if(svcModal){svcModal.querySelector('.svc-modal-x').addEventListener('click',closeSvc);svcModal.querySelector('.svc-modal-bg').addEventListener('click',closeSvc);document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSvc();});}
+const fdetail=document.getElementById('focusDetail');const fdText=fdetail?fdetail.querySelector('.focus-detail-text'):null;
+const canHover=window.matchMedia('(hover:hover)').matches;
+function fset(sv){const key=sv.dataset.key;fsvcs.forEach(s=>s.classList.remove('active'));sv.classList.add('active');if(flist)flist.classList.add('has-active');if(fdText)fdText.textContent=T[curLang][key+'-d']||'';if(fdetail)fdetail.classList.add('show');}
+function ftoggle(sv){if(sv.classList.contains('active')){sv.classList.remove('active');if(flist)flist.classList.remove('has-active');if(fdetail)fdetail.classList.remove('show');}else fset(sv);}
+fsvcs.forEach(sv=>{sv.addEventListener('mouseenter',()=>{if(canHover)fset(sv);});const n=sv.querySelector('.focus-name');if(n)n.addEventListener('click',()=>{canHover?fset(sv):ftoggle(sv);});});
 const navLinks=document.querySelectorAll('.nav-link');
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-45% 0px -50% 0px'});
 ['hero','servicios','contacto'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el);});
