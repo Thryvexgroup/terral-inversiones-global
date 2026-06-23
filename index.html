@@ -146,7 +146,7 @@ a{text-decoration:none;color:inherit;}
 .map.is-live .arc{animation:arcloop 9.1s linear infinite;animation-delay:var(--ld);}
 @keyframes arcloop{0%{stroke-dashoffset:1;opacity:0;}1%{opacity:.85;animation-timing-function:cubic-bezier(.22,.75,.3,1);}8%{stroke-dashoffset:0;opacity:.85;}17%{stroke-dashoffset:0;opacity:.85;}24%{stroke-dashoffset:0;opacity:0;}100%{stroke-dashoffset:0;opacity:0;}}
 .dest{opacity:0;}
-.map.is-live .dest{animation:mappop .4s var(--ease) forwards;animation-delay:calc(var(--d) + 1.35s);}
+.map.is-live .dest{animation:mappop .4s var(--ease) forwards;animation-delay:calc(var(--ld) + 0.6s);}
 @keyframes mappop{from{opacity:0;}to{opacity:1;}}
 .dpin{fill:var(--gold);}
 .dpin-c{fill:var(--bone);}
@@ -170,7 +170,7 @@ a{text-decoration:none;color:inherit;}
 .map.is-live .jx:not(.jx-origin) .jdot{animation:jxdot .55s var(--ease) forwards;animation-delay:calc(var(--d) + 1.25s);}
 @keyframes jxdot{to{background:var(--gold);box-shadow:0 0 0 3px rgba(154,120,54,.15);}}
 .dpin-wrap{transform-box:fill-box;transform-origin:center;transition:transform .3s var(--ease);}
-.map.is-live .dpin-wrap{animation:drop .65s var(--ease);animation-delay:calc(var(--d) + 1.4s);}
+.map.is-live .dpin-wrap{animation:drop .65s var(--ease);animation-delay:calc(var(--ld) + 0.6s);}
 @keyframes drop{0%{transform:scale(0);}60%{transform:scale(1.55);}100%{transform:scale(1);}}
 .dripple{fill:none;stroke:var(--gold);stroke-width:1.6;opacity:0;transform-box:fill-box;transform-origin:center;}
 .map.is-live .dest .dripple{animation:ripping 9.1s linear infinite;animation-delay:var(--ld);}
