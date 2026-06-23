@@ -192,7 +192,7 @@ a{text-decoration:none;color:inherit;}
 .focus-svc.active .focus-name{transform:translateX(22px);}
 .focus-svc.active .focus-name::before{height:1.5rem;}
 .focus-svc.active .focus-idx{color:var(--gold-br);opacity:1;}
-.focus-idx{font-family:var(--fu);font-size:.68rem;font-weight:600;letter-spacing:.2em;color:var(--muted);opacity:.5;flex:none;transition:color .38s var(--ease),opacity .38s var(--ease);}
+.focus-idx{font-family:var(--fu);font-size:.78rem;font-weight:600;letter-spacing:.08em;color:var(--muted);opacity:.5;flex:none;transition:color .38s var(--ease),opacity .38s var(--ease);}
 .focus-label{font-family:var(--fd);font-weight:500;font-size:clamp(1.4rem,2.7vw,2.15rem);line-height:1.1;letter-spacing:-.02em;color:var(--ink);opacity:.82;transition:opacity .38s var(--ease),color .38s var(--ease);}
 .focus-list.has-active .focus-svc:not(.active) .focus-label{opacity:.2;}
 .focus-list.has-active .focus-svc:not(.active) .focus-idx{opacity:.25;}
@@ -311,9 +311,9 @@ a{text-decoration:none;color:inherit;}
 .mm-cta{margin-top:1.4rem;}
 @media(max-width:860px){.nav-toggle{display:flex;}}
 .focus-inline{display:none;}
-@media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}.focus-detail-head{display:flex;align-items:baseline;gap:.6rem;max-width:44ch;margin:0 0 1.15rem;padding-bottom:.85rem;border-bottom:1px solid var(--line-gold);}
-.fdh-idx{font-size:.66rem;letter-spacing:.16em;color:var(--gold-br);font-weight:600;}
-.fdh-title{font-size:.95rem;font-weight:500;letter-spacing:.005em;color:var(--navy);}
+@media(max-width:860px){.focus-inline{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease);}.focus-svc.active .focus-inline{grid-template-rows:1fr;}.focus-inline-in{overflow:hidden;}.focus-inline p{margin:.7rem 0 .2rem;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);opacity:0;transform:translateY(6px);transition:opacity .4s var(--ease) .12s,transform .4s var(--ease) .12s;}.focus-svc.active .focus-inline p{opacity:1;transform:none;}}.focus-detail-head{display:flex;align-items:baseline;gap:.7rem;max-width:44ch;margin:0 0 1.3rem;padding-bottom:1.05rem;border-bottom:1px solid var(--line-gold);}
+.fdh-idx{font-size:.85rem;letter-spacing:.06em;color:var(--gold-br);font-weight:600;}
+.fdh-title{font-size:clamp(1.35rem,1.8vw,1.7rem);font-weight:500;line-height:1.12;letter-spacing:-.012em;color:var(--navy);}
 .why-carousel{margin-top:clamp(2.6rem,6vh,4.5rem);}
 .why-stage{position:relative;height:clamp(330px,44vh,390px);}
 .wc-card{position:absolute;top:0;left:50%;width:min(440px,84vw);height:100%;box-sizing:border-box;background:linear-gradient(158deg,rgba(250,246,239,.52),rgba(240,235,224,.4));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(28,27,23,.07);border-radius:13px;padding:clamp(2.4rem,3.4vw,3.1rem);display:flex;flex-direction:column;justify-content:center;cursor:pointer;transform:translateX(-50%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 14px rgba(28,27,23,.04);transition:transform .6s var(--ease),opacity .6s var(--ease),box-shadow .6s var(--ease),background .6s var(--ease),border-color .6s var(--ease),filter .6s var(--ease);will-change:transform,opacity,filter;}
@@ -451,28 +451,28 @@ a{text-decoration:none;color:inherit;}
     <div class="focus-list">
       <div class="focus-svc" data-key="svc1">
         <button class="focus-name" type="button">
-          <span class="focus-idx">01</span>
+          <span class="focus-idx">I</span>
           <span class="focus-label" data-i18n="svc1-title">Estructuración Corporativa</span>
         </button>
         <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc1-d">Constituimos las estructuras societarias que protegen su patrimonio y reducen su carga fiscal en operaciones internacionales. Holdings, sociedades vehículo (SPV) y fundaciones diseñadas para blindar activos y facilitar la sucesión.</p></div></div>
       </div>
       <div class="focus-svc" data-key="svc2">
         <button class="focus-name" type="button">
-          <span class="focus-idx">02</span>
+          <span class="focus-idx">II</span>
           <span class="focus-label" data-i18n="svc2-title">Asesoramiento Transfronterizo</span>
         </button>
         <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc2-d">Evite la doble imposición y los riesgos regulatorios al invertir fuera de su país. Coordinamos la fiscalidad entre jurisdicciones para que ninguna inversión pague de más.</p></div></div>
       </div>
       <div class="focus-svc" data-key="svc3">
         <button class="focus-name" type="button">
-          <span class="focus-idx">03</span>
+          <span class="focus-idx">III</span>
           <span class="focus-label" data-i18n="svc3-title">Consultoría Estratégica Global</span>
         </button>
         <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc3-d">Decisiones de inversión con visión fiscal desde el primer euro. Alineamos dónde invierte, cómo lo estructura y dónde tributa para maximizar su rentabilidad neta.</p></div></div>
       </div>
       <div class="focus-svc" data-key="svc4">
         <button class="focus-name" type="button">
-          <span class="focus-idx">04</span>
+          <span class="focus-idx">IV</span>
           <span class="focus-label" data-i18n="svc4-title">Optimización Fiscal Internacional</span>
         </button>
         <div class="focus-inline"><div class="focus-inline-in"><p data-i18n="svc4-d">Diseño legal de estrategias para reducir su carga fiscal mediante estructuras eficientes y plenamente conformes con la normativa de cada jurisdicción. Optimización, nunca evasión.</p></div></div>
