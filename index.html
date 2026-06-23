@@ -315,7 +315,7 @@ a{text-decoration:none;color:inherit;}
 .fdh-idx{font-size:.66rem;letter-spacing:.16em;color:var(--gold-br);font-weight:600;}
 .fdh-title{font-size:.95rem;font-weight:500;letter-spacing:.005em;color:var(--navy);}
 .why-carousel{margin-top:clamp(2.6rem,6vh,4.5rem);}
-.why-stage{position:relative;height:clamp(420px,54vh,470px);}
+.why-stage{position:relative;height:clamp(330px,44vh,390px);}
 .wc-card{position:absolute;top:0;left:50%;width:min(440px,84vw);height:100%;box-sizing:border-box;background:linear-gradient(158deg,rgba(250,246,239,.52),rgba(240,235,224,.4));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(28,27,23,.07);border-radius:13px;padding:clamp(2.4rem,3.4vw,3.1rem);display:flex;flex-direction:column;justify-content:center;cursor:pointer;transform:translateX(-50%);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 14px rgba(28,27,23,.04);transition:transform .6s var(--ease),opacity .6s var(--ease),box-shadow .6s var(--ease),background .6s var(--ease),border-color .6s var(--ease),filter .6s var(--ease);will-change:transform,opacity,filter;}
 .wc-card::after{content:"";position:absolute;inset:15px;border:1px solid rgba(154,120,54,.18);border-radius:6px;pointer-events:none;transition:border-color .6s var(--ease);}
 .wc-card.active{background:linear-gradient(158deg,rgba(252,249,243,.6),rgba(243,238,228,.48));box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 36px 84px -40px rgba(28,27,23,.32);border-color:rgba(154,120,54,.2);cursor:default;}
@@ -324,9 +324,6 @@ a{text-decoration:none;color:inherit;}
 .wc-title{font-family:var(--fd);font-weight:500;font-size:clamp(1.55rem,2.4vw,2.05rem);line-height:1.1;letter-spacing:-.022em;color:var(--ink);margin:0 0 .95rem;}
 .wc-title::before{content:"";display:block;width:32px;height:2px;background:linear-gradient(90deg,var(--gold-br),var(--gold));border-radius:2px;margin:0 0 1.25rem;}
 .wc-desc{font-weight:300;font-size:clamp(1rem,1.08vw,1.1rem);line-height:1.68;color:var(--muted);margin:0;}
-.wc-list{list-style:none;margin:clamp(1.2rem,2.6vh,1.5rem) 0 0;padding:clamp(1.2rem,2.6vh,1.5rem) 0 0;border-top:1px solid rgba(154,120,54,.2);display:flex;flex-direction:column;gap:.6rem;}
-.wc-list li{display:flex;align-items:center;gap:.7rem;font-size:.92rem;font-weight:400;letter-spacing:.005em;color:var(--ink);}
-.wc-list svg{width:15px;height:15px;flex:none;color:var(--gold-br);}
 .why-nav{display:flex;align-items:center;justify-content:center;gap:1.4rem;margin-top:clamp(1.8rem,4vh,2.8rem);}
 .wc-arrow{width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.5);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease);}
 .wc-arrow svg{width:20px;height:20px;}
@@ -334,7 +331,7 @@ a{text-decoration:none;color:inherit;}
 .wc-dots{display:flex;align-items:center;gap:.55rem;}
 .wc-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(28,27,23,.18);cursor:pointer;padding:0;transition:width .35s var(--ease),background .35s var(--ease);}
 .wc-dot.active{width:26px;border-radius:5px;background:var(--gold-br);}
-@media(max-width:600px){.why-stage{height:clamp(440px,72vh,560px);}.wc-card{width:86vw;}}
+@media(max-width:600px){.why-stage{height:clamp(340px,56vh,420px);}.wc-card{width:86vw;}}
 </style>
 <script type="application/ld+json">
 {
@@ -538,37 +535,30 @@ a{text-decoration:none;color:inherit;}
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why1-t">Enfoque Personalizado</h3>
         <p class="wc-desc" data-i18n="why1-d">Cada cliente recibe atención individual y soluciones diseñadas específicamente para su situación patrimonial y fiscal.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why1-l1">Estrategia a medida</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why1-l2">Atención directa y personal</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why1-l3">Revisión continua</span></li></ul>
       </article>
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why2-t">Orientación a Resultados</h3>
         <p class="wc-desc" data-i18n="why2-d">Nos comprometemos con resultados tangibles y medibles en la optimización de su carga fiscal internacional.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why2-l1">Objetivos medibles</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why2-l2">Menor carga fiscal</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why2-l3">Informes claros y periódicos</span></li></ul>
       </article>
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why3-t">Experiencia Multijurisdiccional</h3>
         <p class="wc-desc" data-i18n="why3-d">Profundo conocimiento de regímenes fiscales en más de 30 jurisdicciones internacionales estratégicas.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why3-l1">Más de 30 jurisdicciones</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why3-l2">Estructuras internacionales</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why3-l3">Normativa local en cada país</span></li></ul>
       </article>
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why4-t">Asesoría de Alto Nivel</h3>
         <p class="wc-desc" data-i18n="why4-d">Acceso directo a especialistas senior con décadas de experiencia en fiscalidad internacional y estructuración corporativa.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why4-l1">Especialistas senior</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why4-l2">Acceso directo</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why4-l3">Décadas de experiencia</span></li></ul>
       </article>
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why5-t">Confidencialidad y Discreción</h3>
         <p class="wc-desc" data-i18n="why5-d">Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why5-l1">Reserva absoluta</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why5-l2">Manejo seguro de la información</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why5-l3">Privacidad garantizada</span></li></ul>
       </article>
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why6-t">Soporte Integral</h3>
         <p class="wc-desc" data-i18n="why6-d">Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why6-l1">Diseño de la estructura</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why6-l2">Implementación</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why6-l3">Mantenimiento continuo</span></li></ul>
       </article>
       <article class="wc-card">
         <h3 class="wc-title" data-i18n="why7-t">Cumplimiento y Sustancia</h3>
         <p class="wc-desc" data-i18n="why7-d">Cumplimiento normativo total. Toda estructura se diseña con sustancia económica real y plena conformidad legal. Su tranquilidad es tan importante como su rentabilidad.</p>
-        <ul class="wc-list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why7-l1">Sustancia económica real</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why7-l2">Plena conformidad legal</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.4l3.1 3.1L13 4.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-i18n="why7-l3">Optimización, nunca evasión</span></li></ul>
       </article>
     </div>
     <div class="why-nav">
