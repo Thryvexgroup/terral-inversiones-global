@@ -247,7 +247,12 @@ a{text-decoration:none;color:inherit;}
 .proc-step.active .proc-steptitle{opacity:1;color:var(--navy);}
 .proc-stepdesc{display:none;}
 .proc-right{transition:opacity .5s var(--ease);}
-.proc-bignum{display:block;font-family:var(--fs);font-weight:400;font-size:clamp(6.5rem,13vw,13rem);line-height:.82;letter-spacing:.01em;color:var(--gold);opacity:.18;margin-bottom:clamp(1.6rem,4vh,3rem);will-change:transform;transition:transform .6s var(--ease);}
+.proc-mark{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;margin-bottom:clamp(1.8rem,4.5vh,2.8rem);}
+.proc-marklabel{font-family:var(--fd);font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:500;letter-spacing:-.012em;color:var(--navy);line-height:1;}
+.proc-markarrow{display:inline-flex;color:var(--gold-br);animation:procBob 1.9s var(--ease) infinite;transition:opacity .5s var(--ease);}
+.proc-markarrow svg{width:26px;height:26px;display:block;}
+@keyframes procBob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+@media(prefers-reduced-motion:reduce){.proc-markarrow{animation:none;}}
 .proc-bigtext{font-weight:300;font-size:clamp(1.3rem,1.7vw,1.85rem);line-height:1.45;letter-spacing:-.01em;color:var(--ink);opacity:.78;max-width:26ch;margin:0;}
 @media(max-width:860px){.proc-scroll{height:auto;margin-top:2rem;}.proc-sticky{position:static;height:auto;display:block;}.proc-inner{grid-template-columns:1fr;gap:0;}.proc-right{display:none;}.proc-steptitle{opacity:1;}.proc-stepdesc{display:block;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);margin:.6rem 0 0;max-width:46ch;}.proc-fill{display:none;}.proc-tl{row-gap:2.2rem;}}
 .contacto{overflow:hidden;}
@@ -519,7 +524,10 @@ a{text-decoration:none;color:inherit;}
           </div>
         </div>
         <div class="proc-right" id="procRight">
-          <span class="proc-bignum" id="procBignum" aria-hidden="true">I</span>
+          <div class="proc-mark">
+            <span class="proc-marklabel" id="procMarkLabel" data-i18n="step1-badge">Paso I</span>
+            <span class="proc-markarrow" id="procArrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v13M6 12.5l6 6 6-6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
           <p class="proc-bigtext" id="procBigtext" data-i18n="step1-text">Una primera reunión confidencial para entender su situación patrimonial actual, sus objetivos y las oportunidades disponibles. Sin compromiso.</p>
         </div>
       </div>
@@ -805,9 +813,9 @@ const navLinks=document.querySelectorAll('.nav-link');
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navLinks.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-45% 0px -50% 0px'});
 ['hero','servicios','contacto'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el);});
 const procScroll=document.querySelector('.proc-scroll');const procFill=document.getElementById('procFill');const procTl=document.querySelector('.proc-tl');const procSteps=document.querySelectorAll('.proc-step');const procNodes=document.querySelectorAll('.proc-node');
-const procBignum=document.getElementById('procBignum');const procBigtext=document.getElementById('procBigtext');const procRight=document.getElementById('procRight');const procKeys=['step1','step2','step3'];let procLast=0;
-function procSetRight(a){if(procBignum)procBignum.textContent=['I','II','III'][a]||'';if(procBigtext){procBigtext.dataset.i18n=procKeys[a]+'-text';procBigtext.textContent=(T[curLang]&&T[curLang][procKeys[a]+'-text'])||procBigtext.textContent;}}
-function procUpdate(){if(!procScroll||!procFill||!procTl)return;if(window.innerWidth<=860){procSteps.forEach(s=>s.classList.add('active'));procNodes.forEach(n=>n.classList.add('active'));return;}const total=procScroll.offsetHeight-window.innerHeight;if(total<=0)return;let p=(-procScroll.getBoundingClientRect().top)/total;p=Math.max(0,Math.min(1,p));procFill.style.height=(p*(procTl.clientHeight-14))+'px';if(procBignum)procBignum.style.transform='translateY('+((0.5-p)*26).toFixed(1)+'px)';const active=p<0.34?0:(p<0.7?1:2);procSteps.forEach((s,i)=>s.classList.toggle('active',i===active));procNodes.forEach((n,i)=>n.classList.toggle('active',i<=active));if(active!==procLast){procLast=active;if(procRight){procRight.style.opacity='0';setTimeout(()=>{procSetRight(active);procRight.style.opacity='1';},170);}}}
+const procMarkLabel=document.getElementById('procMarkLabel');const procArrow=document.getElementById('procArrow');const procBigtext=document.getElementById('procBigtext');const procRight=document.getElementById('procRight');const procKeys=['step1','step2','step3'];let procLast=0;
+function procSetRight(a){if(procMarkLabel){procMarkLabel.dataset.i18n=procKeys[a]+'-badge';procMarkLabel.textContent=(T[curLang]&&T[curLang][procKeys[a]+'-badge'])||(['Paso I','Paso II','Paso III'][a]||'');}if(procArrow)procArrow.style.opacity=(a>=2?'0':'1');if(procBigtext){procBigtext.dataset.i18n=procKeys[a]+'-text';procBigtext.textContent=(T[curLang]&&T[curLang][procKeys[a]+'-text'])||procBigtext.textContent;}}
+function procUpdate(){if(!procScroll||!procFill||!procTl)return;if(window.innerWidth<=860){procSteps.forEach(s=>s.classList.add('active'));procNodes.forEach(n=>n.classList.add('active'));return;}const total=procScroll.offsetHeight-window.innerHeight;if(total<=0)return;let p=(-procScroll.getBoundingClientRect().top)/total;p=Math.max(0,Math.min(1,p));procFill.style.height=(p*(procTl.clientHeight-14))+'px';const active=p<0.34?0:(p<0.7?1:2);procSteps.forEach((s,i)=>s.classList.toggle('active',i===active));procNodes.forEach((n,i)=>n.classList.toggle('active',i<=active));if(active!==procLast){procLast=active;if(procRight){procRight.style.opacity='0';setTimeout(()=>{procSetRight(active);procRight.style.opacity='1';},170);}}}
 let procTick=false;window.addEventListener('scroll',()=>{if(!procTick){procTick=true;requestAnimationFrame(()=>{procUpdate();procTick=false;});}},{passive:true});
 window.addEventListener('resize',procUpdate);addEventListener('load',procUpdate);procUpdate();
 const cform=document.getElementById('contactForm');
