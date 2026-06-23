@@ -338,8 +338,6 @@ a{text-decoration:none;color:inherit;}
 .wc-dot{width:8px;height:8px;border-radius:50%;border:none;background:rgba(28,27,23,.18);cursor:pointer;padding:0;transition:width .35s var(--ease),background .35s var(--ease);}
 .wc-dot.active{width:26px;border-radius:5px;background:var(--gold-br);}
 @media(max-width:600px){.why-stage{height:clamp(340px,56vh,420px);}.wc-card{width:86vw;}}
-.hero-bg{position:absolute;top:0;right:0;bottom:0;width:58%;z-index:-1;background:url("hero-bg.webp") 50% 32%/cover no-repeat;filter:saturate(.92) brightness(1.02);opacity:.9;pointer-events:none;-webkit-mask-image:linear-gradient(to right,transparent 8%,rgba(0,0,0,.32) 50%,#000 100%),linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 8%,rgba(0,0,0,.32) 50%,#000 100%),linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent);mask-composite:intersect;}
-@media(max-width:860px){.hero-bg{width:100%;background-position:50% 22%;opacity:.4;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 80%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 80%,transparent);}}
 </style>
 <script type="application/ld+json">
 {
@@ -404,7 +402,6 @@ a{text-decoration:none;color:inherit;}
 
 <main>
 <section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
   <span class="kick reveal" data-i18n="hero-kicker">Consultoría privada</span>
   <h1 class="reveal" data-i18n="hero-title" data-i18n-html="true">Estructuras que protegen su patrimonio y maximizan su <em>rentabilidad neta.</em></h1>
   <p class="hero-sub reveal" data-i18n="hero-sub">Diseñamos estructuras internacionales legales y eficientes para que su patrimonio y sus inversiones, especialmente inmobiliarias, rindan más después de impuestos. Con precisión, discreción y enfoque estratégico.</p>
