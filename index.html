@@ -247,7 +247,7 @@ a{text-decoration:none;color:inherit;}
 .proc-step.active .proc-steptitle{opacity:1;color:var(--navy);}
 .proc-stepdesc{display:none;}
 .proc-right{transition:opacity .5s var(--ease);}
-.proc-bignum{display:block;font-family:var(--fd);font-weight:300;font-size:clamp(6.5rem,14vw,14rem);line-height:.78;letter-spacing:-.03em;color:var(--gold);opacity:.15;margin-bottom:clamp(1.6rem,4vh,3rem);will-change:transform;transition:transform .6s var(--ease);}
+.proc-bignum{display:block;font-family:var(--fs);font-weight:400;font-size:clamp(6.5rem,13vw,13rem);line-height:.82;letter-spacing:.01em;color:var(--gold);opacity:.18;margin-bottom:clamp(1.6rem,4vh,3rem);will-change:transform;transition:transform .6s var(--ease);}
 .proc-bigtext{font-weight:300;font-size:clamp(1.3rem,1.7vw,1.85rem);line-height:1.45;letter-spacing:-.01em;color:var(--ink);opacity:.78;max-width:26ch;margin:0;}
 @media(max-width:860px){.proc-scroll{height:auto;margin-top:2rem;}.proc-sticky{position:static;height:auto;display:block;}.proc-inner{grid-template-columns:1fr;gap:0;}.proc-right{display:none;}.proc-steptitle{opacity:1;}.proc-stepdesc{display:block;font-weight:300;font-size:1rem;line-height:1.6;color:var(--muted);margin:.6rem 0 0;max-width:46ch;}.proc-fill{display:none;}.proc-tl{row-gap:2.2rem;}}
 .contacto{overflow:hidden;}
@@ -500,26 +500,26 @@ a{text-decoration:none;color:inherit;}
             <div class="proc-fill" id="procFill" aria-hidden="true"></div>
             <span class="proc-node" aria-hidden="true"></span>
             <div class="proc-step" data-i="0">
-              <span class="proc-stepbadge" data-i18n="step1-badge">Paso 1</span>
+              <span class="proc-stepbadge" data-i18n="step1-badge">Paso I</span>
               <span class="proc-steptitle" data-i18n="step1-title">Consulta Inicial</span>
               <p class="proc-stepdesc" data-i18n="step1-text">Una primera reunión confidencial para entender su situación patrimonial actual, sus objetivos y las oportunidades disponibles. Sin compromiso.</p>
             </div>
             <span class="proc-node" aria-hidden="true"></span>
             <div class="proc-step" data-i="1">
-              <span class="proc-stepbadge" data-i18n="step2-badge">Paso 2</span>
+              <span class="proc-stepbadge" data-i18n="step2-badge">Paso II</span>
               <span class="proc-steptitle" data-i18n="step2-title">Análisis Estratégico</span>
               <p class="proc-stepdesc" data-i18n="step2-text">Nuestro equipo de especialistas realiza un análisis profundo de su situación y diseña una estrategia fiscal personalizada con múltiples escenarios.</p>
             </div>
             <span class="proc-node" aria-hidden="true"></span>
             <div class="proc-step" data-i="2">
-              <span class="proc-stepbadge" data-i18n="step3-badge">Paso 3</span>
+              <span class="proc-stepbadge" data-i18n="step3-badge">Paso III</span>
               <span class="proc-steptitle" data-i18n="step3-title">Implementación Personalizada</span>
               <p class="proc-stepdesc" data-i18n="step3-text">Ejecutamos la estructura diseñada con precisión y le acompañamos en cada etapa, garantizando cumplimiento legal y resultados óptimos.</p>
             </div>
           </div>
         </div>
         <div class="proc-right" id="procRight">
-          <span class="proc-bignum" id="procBignum" aria-hidden="true">01</span>
+          <span class="proc-bignum" id="procBignum" aria-hidden="true">I</span>
           <p class="proc-bigtext" id="procBigtext" data-i18n="step1-text">Una primera reunión confidencial para entender su situación patrimonial actual, sus objetivos y las oportunidades disponibles. Sin compromiso.</p>
         </div>
       </div>
@@ -686,9 +686,9 @@ const T = {
         'why5-title': 'Confidencialidad y Discreción', 'why5-text': 'Absoluta reserva en el manejo de información sensible. La privacidad de nuestros clientes es nuestra máxima prioridad.',
         'why6-title': 'Soporte Integral', 'why6-text': 'Acompañamiento completo desde el diseño de la estructura hasta su implementación y mantenimiento continuo.',
         'proc-eyebrow': 'Cómo Trabajamos', 'proc-heading': 'Proceso',
-        'step1-badge': 'Paso 1', 'step1-title': 'Consulta Inicial', 'step1-text': 'Una primera reunión confidencial para entender su situación patrimonial actual, sus objetivos y las oportunidades disponibles. Sin compromiso.',
-        'step2-badge': 'Paso 2', 'step2-title': 'Análisis Estratégico', 'step2-text': 'Nuestro equipo de especialistas realiza un análisis profundo de su situación y diseña una estrategia fiscal personalizada con múltiples escenarios.',
-        'step3-badge': 'Paso 3', 'step3-title': 'Implementación Personalizada', 'step3-text': 'Ejecutamos la estructura diseñada con precisión y le acompañamos en cada etapa, garantizando cumplimiento legal y resultados óptimos.',
+        'step1-badge': 'Paso I', 'step1-title': 'Consulta Inicial', 'step1-text': 'Una primera reunión confidencial para entender su situación patrimonial actual, sus objetivos y las oportunidades disponibles. Sin compromiso.',
+        'step2-badge': 'Paso II', 'step2-title': 'Análisis Estratégico', 'step2-text': 'Nuestro equipo de especialistas realiza un análisis profundo de su situación y diseña una estrategia fiscal personalizada con múltiples escenarios.',
+        'step3-badge': 'Paso III', 'step3-title': 'Implementación Personalizada', 'step3-text': 'Ejecutamos la estructura diseñada con precisión y le acompañamos en cada etapa, garantizando cumplimiento legal y resultados óptimos.',
         'contact-eyebrow': 'Contacto', 'contact-heading': 'Conversemos', 'contact-tagline': 'Inicie su Consulta Privada',
         'contact-desc': 'Trabajamos con un número limitado de patrimonios cada año para garantizar atención personalizada de máxima calidad.',
         'contact-location': 'Ciudad de Panamá, Panamá',
@@ -748,9 +748,9 @@ const T = {
         'why5-title': 'Confidentiality & Discretion', 'why5-text': 'Strategy & discretion in handling sensitive information. Our clients\' privacy is our highest priority.',
         'why6-title': 'Comprehensive Support', 'why6-text': 'Full accompaniment from the design of the structure to its implementation and ongoing maintenance.',
         'proc-eyebrow': 'How We Work', 'proc-heading': 'Process',
-        'step1-badge': 'Step 1', 'step1-title': 'Initial Consultation', 'step1-text': 'A first confidential meeting to understand your current asset situation, your objectives and the available opportunities. No commitment.',
-        'step2-badge': 'Step 2', 'step2-title': 'Strategic Analysis', 'step2-text': 'Our team of specialists conducts an in-depth analysis of your situation and designs a personalized tax strategy with multiple scenarios.',
-        'step3-badge': 'Step 3', 'step3-title': 'Personalized Implementation', 'step3-text': 'We execute the designed structure with precision and accompany you at each stage, ensuring legal compliance and optimal results.',
+        'step1-badge': 'Step I', 'step1-title': 'Initial Consultation', 'step1-text': 'A first confidential meeting to understand your current asset situation, your objectives and the available opportunities. No commitment.',
+        'step2-badge': 'Step II', 'step2-title': 'Strategic Analysis', 'step2-text': 'Our team of specialists conducts an in-depth analysis of your situation and designs a personalized tax strategy with multiple scenarios.',
+        'step3-badge': 'Step III', 'step3-title': 'Personalized Implementation', 'step3-text': 'We execute the designed structure with precision and accompany you at each stage, ensuring legal compliance and optimal results.',
         'contact-eyebrow': 'Contact', 'contact-heading': 'Let\'s Talk', 'contact-tagline': 'Start Your Private Consultation',
         'contact-desc': 'We take on a limited number of estates each year to ensure the highest quality personalized attention.',
         'contact-location': 'Panama City, Panama',
@@ -806,7 +806,7 @@ const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){navLi
 ['hero','servicios','contacto'].forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el);});
 const procScroll=document.querySelector('.proc-scroll');const procFill=document.getElementById('procFill');const procTl=document.querySelector('.proc-tl');const procSteps=document.querySelectorAll('.proc-step');const procNodes=document.querySelectorAll('.proc-node');
 const procBignum=document.getElementById('procBignum');const procBigtext=document.getElementById('procBigtext');const procRight=document.getElementById('procRight');const procKeys=['step1','step2','step3'];let procLast=0;
-function procSetRight(a){if(procBignum)procBignum.textContent='0'+(a+1);if(procBigtext){procBigtext.dataset.i18n=procKeys[a]+'-text';procBigtext.textContent=(T[curLang]&&T[curLang][procKeys[a]+'-text'])||procBigtext.textContent;}}
+function procSetRight(a){if(procBignum)procBignum.textContent=['I','II','III'][a]||'';if(procBigtext){procBigtext.dataset.i18n=procKeys[a]+'-text';procBigtext.textContent=(T[curLang]&&T[curLang][procKeys[a]+'-text'])||procBigtext.textContent;}}
 function procUpdate(){if(!procScroll||!procFill||!procTl)return;if(window.innerWidth<=860){procSteps.forEach(s=>s.classList.add('active'));procNodes.forEach(n=>n.classList.add('active'));return;}const total=procScroll.offsetHeight-window.innerHeight;if(total<=0)return;let p=(-procScroll.getBoundingClientRect().top)/total;p=Math.max(0,Math.min(1,p));procFill.style.height=(p*(procTl.clientHeight-14))+'px';if(procBignum)procBignum.style.transform='translateY('+((0.5-p)*26).toFixed(1)+'px)';const active=p<0.34?0:(p<0.7?1:2);procSteps.forEach((s,i)=>s.classList.toggle('active',i===active));procNodes.forEach((n,i)=>n.classList.toggle('active',i<=active));if(active!==procLast){procLast=active;if(procRight){procRight.style.opacity='0';setTimeout(()=>{procSetRight(active);procRight.style.opacity='1';},170);}}}
 let procTick=false;window.addEventListener('scroll',()=>{if(!procTick){procTick=true;requestAnimationFrame(()=>{procUpdate();procTick=false;});}},{passive:true});
 window.addEventListener('resize',procUpdate);addEventListener('load',procUpdate);procUpdate();
