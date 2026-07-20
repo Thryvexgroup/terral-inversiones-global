@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     mensaje,
   } = req.body;
 
-  if (!nombre || !apellidos || !email || !telefono || !tipoCliente || !mensaje) {
+  if (!nombre || !email || !mensaje) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
