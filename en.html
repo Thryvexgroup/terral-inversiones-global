@@ -239,6 +239,8 @@ body.in-load .hero-title .ti{transform:translateY(0);}
 /* mobile scroll-reveal: plays only when .in is added; element stays visible by
    default so a missed observer can never hide content */
 @keyframes mRise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+/* map image reveal: fades + grows subtly into place (echoes the desktop scroll-grow) */
+@keyframes mapRise{from{opacity:0;transform:scale(.94);}to{opacity:1;transform:scale(1);}}
 .about-inner{position:relative;z-index:3;width:100%;max-width:980px;padding:0 clamp(1.4rem,4vw,3.4rem);text-align:center;will-change:transform;}
 .about-kicker{display:inline-block;font-family:var(--fm);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(1.4rem,3vh,2rem);will-change:opacity,transform,filter;}
 .about-h{font-family:var(--fd);font-weight:400;font-size:clamp(2.6rem,6.6vw,6.2rem);line-height:1.06;letter-spacing:-.024em;max-width:18ch;margin:0 auto;color:var(--ink);font-variation-settings:"opsz" 130;}
@@ -523,8 +525,11 @@ body.in-load .hero-title .ti{transform:translateY(0);}
   .cl-back{bottom:-11vw;}
   .cl-front{bottom:-14vw;}
 
-  /* MAP HEADLINE — same fade+rise on scroll (its word-by-word cascade is pin-driven
-     and disabled on mobile). Visible by default; animates only when .in lands. */
+  /* MAP — reveal the dotted map + headline together as the section scrolls in, like the
+     other sections (rather than the image being pre-shown on load). Both are visible by
+     default so a missed observer never hides them; they animate only when .in lands. */
+  .mapa-full{opacity:1;transform:scale(1);transition:none;}
+  .mapa-tm.in .mapa-full{animation:mapRise .95s var(--ease) both;}
   .mapa-tm.in .mapa-line{animation:mRise .72s var(--ease) both;}
 
   /* PRINCIPLE CARDS — each stacked card rises in as it scrolls up (observed as .pr-card
@@ -1085,7 +1090,7 @@ body.in-load .hero-title .ti{transform:translateY(0);}
       });
     })(line);
     var ws=[].slice.call(line.querySelectorAll('.mw')), n=ws.length;
-    if(window.matchMedia('(max-width:900px)').matches){ if(map){map.classList.add('on');map.style.transform='scale(1)';} ws.forEach(function(w){w.style.opacity='1';w.style.filter='none';}); return; }
+    if(window.matchMedia('(max-width:900px)').matches){ ws.forEach(function(w){w.style.opacity='1';w.style.filter='none';}); return; }  // map image + words reveal via .mapa-tm.in (CSS) as the section scrolls in
     function cl(v,a,b){return v<a?a:v>b?b:v;}
     function upd(){
       if(window.__navScrolling)return;
