@@ -509,6 +509,9 @@ body.in-load .hero-title .ti{transform:translateY(0);}
   .about-h{font-size:clamp(2.4rem,10vw,3.4rem);text-shadow:0 1px 24px rgba(243,242,239,.92),0 2px 6px rgba(243,242,239,.7);}
   .about-h .w{opacity:1!important;}
   .about-h em{color:var(--accent-d);}
+  /* fade the TOP edge into the page too (base mask only fades the bottom),
+     so the image emerges from the hero instead of a hard horizontal seam */
+  .about-bg{-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 15%,#000 82%,transparent 100%)!important;mask-image:linear-gradient(180deg,transparent 0%,#000 15%,#000 82%,transparent 100%)!important;}
 
   /* STEP CARDS — the column-parallax is off on mobile; guarantee the cards are
      visible instead of relying on a reveal transition that can stall */
