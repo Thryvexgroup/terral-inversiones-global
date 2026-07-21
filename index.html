@@ -238,7 +238,7 @@ body.in-load .hero-title .ti{transform:translateY(0);}
 @keyframes cloudB{0%,100%{transform:translate(9%,0) scaleX(-1);}50%{transform:translate(-8%,2.5%) scaleX(-1);}}
 /* mobile scroll-reveal: plays only when .in is added; element stays visible by
    default so a missed observer can never hide content */
-@keyframes mRise{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:none;}}
+@keyframes mRise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
 .about-inner{position:relative;z-index:3;width:100%;max-width:980px;padding:0 clamp(1.4rem,4vw,3.4rem);text-align:center;will-change:transform;}
 .about-kicker{display:inline-block;font-family:var(--fm);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:clamp(1.4rem,3vh,2rem);will-change:opacity,transform,filter;}
 .about-h{font-family:var(--fd);font-weight:400;font-size:clamp(2.6rem,6.6vw,6.2rem);line-height:1.06;letter-spacing:-.024em;max-width:18ch;margin:0 auto;color:var(--ink);font-variation-settings:"opsz" 130;}
@@ -514,7 +514,7 @@ body.in-load .hero-title .ti{transform:translateY(0);}
      !important beats the JS's own inline opacity/filter reset on load. */
   .about-sticky{min-height:70vh;}
   .about-h{font-size:clamp(2.05rem,8.2vw,3.3rem);max-width:none;text-shadow:0 1px 24px rgba(243,242,239,.92),0 2px 6px rgba(243,242,239,.7);}
-  .about.in .about-h{animation:mRise 1.05s var(--ease) both;}
+  .about.in .about-h{animation:mRise .72s var(--ease) both;}
   .about-h .w{opacity:1!important;}
   .about-h em{color:var(--accent-d);}
   /* fade the TOP edge into the page too (base mask only fades the bottom),
@@ -528,11 +528,17 @@ body.in-load .hero-title .ti{transform:translateY(0);}
 
   /* MAP HEADLINE — same fade+rise on scroll (its word-by-word cascade is pin-driven
      and disabled on mobile). Visible by default; animates only when .in lands. */
-  .mapa-tm.in .mapa-line{animation:mRise 1.05s var(--ease) both;}
+  .mapa-tm.in .mapa-line{animation:mRise .72s var(--ease) both;}
 
   /* PRINCIPLE CARDS — each stacked card rises in as it scrolls up (observed as .pr-card
      in the IO list). Visible by default so a missed observer never hides an image. */
-  .pr-card.in{animation:mRise .9s var(--ease) both;}
+  .pr-card.in{animation:mRise .72s var(--ease) both;}
+
+  /* MOTION LANGUAGE — one quick, subtle fade+rise for every content reveal on mobile,
+     so headlines, cards and rows all move as a single deliberate system */
+  .reveal{transform:translateY(18px);}
+  .reveal.in{transition:opacity .72s var(--ease),transform .72s var(--ease);}
+  .dif-row{transform:translateY(18px);transition:opacity .72s var(--ease),transform .72s var(--ease);}
 
   /* STEP CARDS — let the existing IO-driven fade (.form-grid.in .fbox{opacity:1}) run;
      only the desktop column-parallax offset is off (already reset by the 900px rule). */
