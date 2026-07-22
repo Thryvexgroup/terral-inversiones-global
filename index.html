@@ -22,11 +22,17 @@
 <meta name="twitter:title" content="Terral Inversiones Globales — Un patrimonio. Varios mundos.">
 <meta name="twitter:description" content="Inversión inmobiliaria internacional. Usted elige la geografía y el importe; nosotros seleccionamos y gestionamos.">
 <meta name="twitter:image" content="https://terral.global/assets/images/og-terral.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,WONK@0,9..144,300..900,0;1,9..144,300..900,0&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=zodiak@300,400,500,700&display=swap" rel="stylesheet"><style>
+<link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/zodiak-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* self-hosted fonts (previously Google Fonts + Fontshare CDN; Fraunces dropped — it was only ever a fallback) */
+@font-face{font-family:'Satoshi';src:url('assets/fonts/satoshi-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Satoshi';src:url('assets/fonts/satoshi-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Satoshi';src:url('assets/fonts/satoshi-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Zodiak';src:url('assets/fonts/zodiak-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Zodiak';src:url('assets/fonts/zodiak-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Space Mono';src:url('assets/fonts/space-mono-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Space Mono';src:url('assets/fonts/space-mono-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
 :root{
   --bone:#F3F2EF; --bone-2:#E6E5E0; --white:#FCFCFA; --ink:#141310; --muted:#5C5A53; --faint:#8C877D;
   --accent:#78705F; --accent-d:#5E5749;
