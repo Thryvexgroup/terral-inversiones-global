@@ -432,6 +432,15 @@ body.in-load .hero-title .ti{transform:translateY(0);}
 .cf-note{font-family:var(--fm);font-size:.7rem;letter-spacing:.06em;color:var(--accent);margin-top:.8rem;min-height:1rem;transition:opacity .4s var(--ease);}
 .cf-note.ok{font-family:var(--fd);font-size:clamp(1.15rem,1.5vw,1.4rem);letter-spacing:-.01em;line-height:1.4;text-transform:none;color:#ECE7DA;margin-top:1.4rem;padding-top:1.3rem;border-top:1px solid rgba(236,231,218,.18);}
 .cf-note.err{font-size:.74rem;color:#D8A48F;}
+/* sent state — the whole form is replaced by a big centred confirmation so it can't be missed */
+.cf-success{display:none;}
+.contact-grid.sent{grid-template-columns:1fr;}
+.contact-grid.sent .contact-lead{display:none;}
+.contact-grid.sent .contact-form>*:not(.cf-success){display:none;}
+.contact-grid.sent .cf-success{display:block;text-align:center;max-width:34ch;margin:0 auto;padding:clamp(2.5rem,8vh,5rem) 0;animation:mRise .7s var(--ease) both;}
+.cf-success-check{display:inline-flex;align-items:center;justify-content:center;width:60px;height:60px;border-radius:50%;border:1px solid rgba(236,231,218,.28);color:var(--accent);font-size:1.5rem;margin-bottom:1.6rem;}
+.cf-success-title{font-family:var(--fd);font-weight:400;font-size:clamp(2.1rem,3.6vw,3rem);line-height:1.08;letter-spacing:-.02em;color:#ECE7DA;margin-bottom:.9rem;}
+.cf-success-sub{font-family:var(--fu);font-weight:400;font-size:clamp(1.02rem,1.2vw,1.18rem);line-height:1.6;color:rgba(236,231,218,.66);}
 .contact-email{display:block;position:relative;margin-top:clamp(2.4rem,6vh,3.6rem);padding:0 clamp(1.4rem,4vw,3.4rem) clamp(4rem,10vh,7.5rem);color:#ECE7DA;}
 .contact-email-label{display:block;font-family:var(--fm);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(236,231,218,.5);margin-bottom:clamp(.5rem,1.4vh,.9rem);}
 .contact-email-addr{display:block;font-family:var(--fd);font-weight:400;font-size:clamp(2rem,9.2vw,9.5rem);line-height:.9;letter-spacing:-.035em;white-space:nowrap;transition:color .4s var(--ease);}
@@ -868,6 +877,11 @@ body.in-load .hero-title .ti{transform:translateY(0);}
         <button type="submit" class="cf-send">Send <span>&rarr;</span></button>
         <p class="cf-confid">We reply personally within 24 hours. Your information is treated in the strictest confidence.</p>
         <p class="cf-note" id="cfnote" aria-live="polite"></p>
+        <div class="cf-success" id="cfsuccess" aria-live="polite">
+          <span class="cf-success-check">✓</span>
+          <p class="cf-success-title">Message sent.</p>
+          <p class="cf-success-sub">Thank you. We’ll get back to you personally, shortly — within 24&nbsp;hours.</p>
+        </div>
       </form>
     </div>
   </div>
@@ -1304,7 +1318,11 @@ body.in-load .hero-title .ti{transform:translateY(0);}
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
       .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
       .then(function(res){
-        if(res.ok){ f.reset(); if(cw)cw.hidden=true; if(cv)cv.hidden=true; if(note){note.textContent='✓ Message sent. Thank you — we’ll get back to you shortly, within 24 hours.';note.classList.add('ok');} }
+        if(res.ok){ f.reset(); if(cw)cw.hidden=true; if(cv)cv.hidden=true;
+          var grid=f.closest('.contact-grid'); if(grid)grid.classList.add('sent');
+          var suc=document.getElementById('cfsuccess');
+          if(suc){ var y=Math.max(0,suc.getBoundingClientRect().top+window.scrollY-Math.max(120,(window.innerHeight-suc.offsetHeight)/2)); if(window.lenis){window.lenis.scrollTo(y,{duration:1});}else{window.scrollTo({top:y,behavior:'smooth'});} }
+        }
         else { if(note){note.textContent='Something went wrong. Please write to us directly at info@terral.global.';note.classList.add('err');} }
       })
       .catch(function(){ if(note){note.textContent='Something went wrong. Please write to us directly at info@terral.global.';note.classList.add('err');} })
