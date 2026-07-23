@@ -34,6 +34,17 @@ export default async function handler(req, res) {
     empresa:          'Empresa',
   };
 
+  // one field row — hairline divider, muted label, ink value
+  const row = (label, value, opts = {}) => `
+                <tr>
+                  <td style="padding:15px 0;${opts.last ? '' : 'border-bottom:1px solid #E6E5E0;'}">
+                    <p style="margin:0 0 5px;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#8C877D;">${label}</p>
+                    <p style="margin:0;font-size:16px;line-height:1.5;color:#141310;${opts.bold ? 'font-weight:600;' : ''}white-space:pre-wrap;">${value}</p>
+                  </td>
+                </tr>`;
+
+  const nombreCompleto = `${nombre}${apellidos ? ' ' + apellidos : ''}`;
+
   const html = `
 <!DOCTYPE html>
 <html lang="es">
@@ -42,104 +53,45 @@ export default async function handler(req, res) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nueva consulta — Terral Inversiones Globales</title>
 </head>
-<body style="margin:0;padding:0;background:#cadff0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#cadff0;padding:40px 20px;">
+<body style="margin:0;padding:0;background:#E6E5E0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#E6E5E0;padding:44px 20px;">
     <tr>
       <td align="center">
-        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#e6f4ff;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(66,88,114,0.15);">
+        <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#FCFCFA;border-radius:14px;overflow:hidden;box-shadow:0 12px 44px rgba(20,19,16,0.10);">
 
           <!-- Header -->
           <tr>
-            <td style="background:#425872;padding:32px 40px;text-align:center;">
-              <img
-                src="https://cdn.prod.website-files.com/69c016157bffa9d566c4a040/69c585901898bcb4f86bb347_LOGO_TERRAL-removebg-preview.png"
-                alt="Terral Inversiones Globales"
-                width="180"
-                style="display:block;margin:0 auto 16px;filter:brightness(0) invert(1);"
-              >
-              <p style="margin:0;color:#adc4e4;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">
-                Nueva consulta recibida
-              </p>
+            <td style="background:#141310;padding:40px 46px 34px;">
+              <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:28px;font-weight:700;letter-spacing:-0.01em;color:#F3F2EF;line-height:1;">TERRAL<span style="color:#78705F;">.</span></p>
+              <p style="margin:16px 0 0;color:#8C877D;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;">Nueva consulta recibida</p>
             </td>
           </tr>
 
           <!-- Body -->
           <tr>
-            <td style="padding:40px;">
-              <p style="margin:0 0 28px;font-size:15px;color:#326097;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;">
-                Datos del cliente
-              </p>
-
-              <!-- Fields -->
+            <td style="padding:42px 46px;">
+              <p style="margin:0 0 26px;font-size:11px;color:#78705F;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;">Datos del cliente</p>
               <table width="100%" cellpadding="0" cellspacing="0">
-
-                <tr>
-                  <td style="padding:12px 0;border-bottom:1px solid #adc4e4;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Nombre completo</p>
-                    <p style="margin:0;font-size:15px;color:#425872;font-weight:600;">${nombre} ${apellidos}</p>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="padding:12px 0;border-bottom:1px solid #adc4e4;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Correo electrónico</p>
-                    <p style="margin:0;font-size:15px;color:#425872;">
-                      <a href="mailto:${email}" style="color:#326097;text-decoration:none;">${email}</a>
-                    </p>
-                  </td>
-                </tr>
-
-                <tr>
-                  <td style="padding:12px 0;border-bottom:1px solid #adc4e4;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Teléfono</p>
-                    <p style="margin:0;font-size:15px;color:#425872;">${telefono}</p>
-                  </td>
-                </tr>
-
-                ${whatsapp ? `
-                <tr>
-                  <td style="padding:12px 0;border-bottom:1px solid #adc4e4;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">WhatsApp</p>
-                    <p style="margin:0;font-size:15px;color:#425872;">${whatsapp}</p>
-                  </td>
-                </tr>` : ''}
-
-                <tr>
-                  <td style="padding:12px 0;border-bottom:1px solid #adc4e4;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Tipo de cliente</p>
-                    <p style="margin:0;font-size:15px;color:#425872;">${clientTypeLabels[tipoCliente] || tipoCliente}</p>
-                  </td>
-                </tr>
-
-                ${contactoPreferido ? `
-                <tr>
-                  <td style="padding:12px 0;border-bottom:1px solid #adc4e4;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Método de contacto preferido</p>
-                    <p style="margin:0;font-size:15px;color:#425872;">${contactMethodLabels[contactoPreferido] || contactoPreferido}</p>
-                  </td>
-                </tr>` : ''}
-
-                <tr>
-                  <td style="padding:12px 0;">
-                    <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Comentario</p>
-                    <p style="margin:0;font-size:15px;color:#425872;line-height:1.7;white-space:pre-wrap;">${mensaje || '—'}</p>
-                  </td>
-                </tr>
-
+                ${row('Nombre completo', nombreCompleto, { bold: true })}
+                ${row('Correo electrónico', `<a href="mailto:${email}" style="color:#5E5749;text-decoration:none;">${email}</a>`)}
+                ${row('Teléfono', telefono || '—')}
+                ${whatsapp ? row('WhatsApp', whatsapp) : ''}
+                ${row('Tipo de cliente', clientTypeLabels[tipoCliente] || tipoCliente || '—')}
+                ${contactoPreferido ? row('Método de contacto preferido', contactMethodLabels[contactoPreferido] || contactoPreferido) : ''}
+                ${row('Comentario', mensaje || '—', { last: true })}
               </table>
             </td>
           </tr>
 
           <!-- Footer -->
           <tr>
-            <td style="background:#dfeefa;padding:24px 40px;text-align:center;border-top:1px solid #adc4e4;">
-              <p style="margin:0;font-size:12px;color:#9bb4d3;">
-                © ${new Date().getFullYear()} Terral Inversiones Globales — Ciudad de Panamá, Panamá
-              </p>
+            <td style="background:#F3F2EF;padding:24px 46px;text-align:center;border-top:1px solid #E6E5E0;">
+              <p style="margin:0;font-size:11px;color:#8C877D;letter-spacing:0.02em;">© ${new Date().getFullYear()} Terral Inversiones Globales · Ciudad de Panamá, Panamá</p>
             </td>
           </tr>
 
         </table>
+        <p style="margin:18px 0 0;font-size:11px;color:#8C877D;letter-spacing:0.04em;">Responda personalmente en menos de 24&nbsp;horas.</p>
       </td>
     </tr>
   </table>
@@ -150,7 +102,7 @@ export default async function handler(req, res) {
     from:    'Terral Inversiones Globales <noreply@thryvexgroup.com>',
     to:      'info@terral.global',
     replyTo: email,
-    subject: `Nueva consulta de ${nombre} ${apellidos}`,
+    subject: `Nueva consulta de ${nombreCompleto}`,
     html,
   });
 
