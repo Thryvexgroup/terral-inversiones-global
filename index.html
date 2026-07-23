@@ -90,7 +90,7 @@ body.menu-open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate
    bone bar turns muddy over dark, so go transparent with light marks instead.
    Suppressed while the menu is open (that overlay is light bone). */
 .nav,.brand,.nav-toggle span,.nav-links a,.nav-lang,.nav-lang b,.nav-cta{transition:background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease);}
-body.nav-dark:not(.menu-open) .nav{background:transparent;border-bottom-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;}
+body.nav-dark:not(.menu-open) .nav{background:rgba(19,18,16,.78);border-bottom-color:rgba(236,231,218,.1);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);}
 body.nav-dark:not(.menu-open) .brand{color:var(--bone);}
 body.nav-dark:not(.menu-open) .nav-toggle span{background:var(--bone);}
 body.nav-dark:not(.menu-open) .nav-links a{color:rgba(236,231,218,.82);}
@@ -527,6 +527,8 @@ body.in-load .hero-title .ti{transform:translateY(0);}
   .big-title.bt-long{font-size:clamp(2.2rem,10.5vw,3.3rem);}
   .big-title.bt-long .bt-in{white-space:normal;}
   .contact-title{font-size:clamp(2.9rem,13vw,4.4rem);}
+  /* the giant email is white-space:nowrap and the section clips overflow — size it to fit the phone */
+  .contact-email-addr{font-size:clamp(1.45rem,7.6vw,2.6rem);letter-spacing:-.02em;}
 
   /* MIST — the pinned-scroll word reveal breaks once the section un-pins on mobile
      (its progress math assumes a section taller than the viewport), so instead of a
