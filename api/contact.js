@@ -18,7 +18,7 @@ export default async function handler(req, res) {
     mensaje,
   } = req.body;
 
-  if (!nombre || !email || !mensaje) {
+  if (!nombre || !email) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -122,7 +122,7 @@ export default async function handler(req, res) {
                 <tr>
                   <td style="padding:12px 0;">
                     <p style="margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#9bb4d3;">Comentario</p>
-                    <p style="margin:0;font-size:15px;color:#425872;line-height:1.7;white-space:pre-wrap;">${mensaje}</p>
+                    <p style="margin:0;font-size:15px;color:#425872;line-height:1.7;white-space:pre-wrap;">${mensaje || '—'}</p>
                   </td>
                 </tr>
 
