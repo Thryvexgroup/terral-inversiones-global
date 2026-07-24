@@ -7,6 +7,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const b = req.body || {};
+
+  // spam honeypot: real users never fill this hidden field; bots do → silently accept & drop
+  if (b.website) {
+    return res.status(200).json({ success: true });
+  }
+
   const {
     nombre,
     apellidos,
@@ -16,11 +23,21 @@ export default async function handler(req, res) {
     'tipo-cliente': tipoCliente,
     'contacto-preferido': contactoPreferido,
     mensaje,
-  } = req.body;
+  } = b;
 
-  if (!nombre || !apellidos || !email) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  if (!nombre || !apellidos || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email))) {
+    return res.status(400).json({ error: 'Missing or invalid required fields' });
   }
+
+  // reject absurdly long input (abuse / oversized payloads)
+  if ([nombre, apellidos, email, telefono, whatsapp, mensaje].some((v) => typeof v === 'string' && v.length > 5000)) {
+    return res.status(400).json({ error: 'Input too long' });
+  }
+
+  // escape user input before it goes into the email HTML (prevents HTML/script injection)
+  const esc = (v) => String(v == null ? '' : v)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
   const contactMethodLabels = {
     whatsapp:  'WhatsApp',
@@ -72,13 +89,13 @@ export default async function handler(req, res) {
             <td style="padding:42px 46px;">
               <p style="margin:0 0 26px;font-size:11px;color:#78705F;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;">Datos del cliente</p>
               <table width="100%" cellpadding="0" cellspacing="0">
-                ${row('Nombre completo', nombreCompleto, { bold: true })}
-                ${row('Correo electrónico', `<a href="mailto:${email}" style="color:#5E5749;text-decoration:none;">${email}</a>`)}
-                ${row('Teléfono', telefono || '—')}
-                ${whatsapp ? row('WhatsApp', whatsapp) : ''}
-                ${row('Tipo de cliente', clientTypeLabels[tipoCliente] || tipoCliente || '—')}
-                ${contactoPreferido ? row('Método de contacto preferido', contactMethodLabels[contactoPreferido] || contactoPreferido) : ''}
-                ${row('Comentario', mensaje || '—', { last: true })}
+                ${row('Nombre completo', esc(nombreCompleto), { bold: true })}
+                ${row('Correo electrónico', `<a href="mailto:${esc(email)}" style="color:#5E5749;text-decoration:none;">${esc(email)}</a>`)}
+                ${row('Teléfono', esc(telefono) || '—')}
+                ${whatsapp ? row('WhatsApp', esc(whatsapp)) : ''}
+                ${row('Tipo de cliente', esc(clientTypeLabels[tipoCliente] || tipoCliente || '—'))}
+                ${contactoPreferido ? row('Método de contacto preferido', esc(contactMethodLabels[contactoPreferido] || contactoPreferido)) : ''}
+                ${row('Comentario', esc(mensaje) || '—', { last: true })}
               </table>
             </td>
           </tr>
@@ -102,7 +119,7 @@ export default async function handler(req, res) {
     from:    'Terral Inversiones Globales <noreply@thryvexgroup.com>',
     to:      'info@terral.global',
     replyTo: email,
-    subject: `Nueva consulta de ${nombreCompleto}`,
+    subject: `Nueva consulta de ${nombreCompleto.replace(/[\r\n]+/g, ' ').slice(0, 120)}`,
     html,
   });
 

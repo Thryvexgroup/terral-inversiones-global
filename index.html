@@ -852,6 +852,7 @@ body.in-load .hero-title .ti{transform:translateY(0);}
         <p class="contact-sub">Trabajamos con un número limitado de clientes. Una primera conversación confidencial, sin compromiso. Díganos dónde quiere estar y nosotros le decimos cómo.</p>
       </div>
       <form class="contact-form reveal" id="cform" novalidate>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"><label>No rellenar<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="cf-two">
           <div class="cf-row"><input type="text" name="nombre" placeholder="Nombre *" required autocomplete="given-name"></div>
           <div class="cf-row"><input type="text" name="apellidos" placeholder="Apellidos *" required autocomplete="family-name"></div>
@@ -1315,7 +1316,7 @@ body.in-load .hero-title .ti{transform:translateY(0);}
     if(!nombre||!apellidos||!email){ if(note){note.textContent='Indique su nombre, sus apellidos y su correo electrónico.';note.classList.add('err');} return; }
     var mensajeFull=mensaje;
     if(g('videochat-medio')) mensajeFull+='\n\nVideochat — cómo conectar: '+g('videochat-medio');
-    var payload={nombre:nombre,apellidos:g('apellidos'),email:email,telefono:(g('tel-prefix')+' '+g('tel-number')).trim(),whatsapp:g('whatsapp-num'),'tipo-cliente':g('tipo-cliente'),'contacto-preferido':g('contacto-preferido'),mensaje:mensajeFull};
+    var payload={nombre:nombre,apellidos:g('apellidos'),email:email,telefono:(g('tel-prefix')+' '+g('tel-number')).trim(),whatsapp:g('whatsapp-num'),'tipo-cliente':g('tipo-cliente'),'contacto-preferido':g('contacto-preferido'),mensaje:mensajeFull,website:g('website')};
     var btn=f.querySelector('.cf-send'); if(btn)btn.disabled=true;
     if(note)note.textContent='Enviando…';
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})

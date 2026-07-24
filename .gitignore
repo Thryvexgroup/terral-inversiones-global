@@ -4,3 +4,7 @@ redesign-2026/
 _archive/
 content/
 node_modules/
+
+# secrets / env
+.env
+.env.*
