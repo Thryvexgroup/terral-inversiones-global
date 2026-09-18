@@ -44,7 +44,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;overflow-x:clip;font-size:106%;}
-body{background:var(--bone);color:var(--ink);font-family:var(--fu);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;}
+body{background:var(--bone);color:var(--ink);font-family:var(--fu);font-weight:400;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip;max-width:100vw;}
 a{color:inherit;text-decoration:none;}
 ::selection{background:var(--accent);color:var(--bone);}
 
@@ -849,7 +849,7 @@ body.in-load .hero-title .ti{transform:translateY(0);}
         <p class="contact-sub">We work with a limited number of clients. A first conversation, confidential and without obligation. Tell us where you want to be, and we’ll tell you how.</p>
       </div>
       <form class="contact-form reveal" id="cform" novalidate>
-        <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"><label>No rellenar<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <div aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;"><label>No rellenar<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
         <div class="cf-two">
           <div class="cf-row"><input type="text" name="nombre" placeholder="Name *" required autocomplete="given-name"></div>
           <div class="cf-row"><input type="text" name="apellidos" placeholder="Last name *" required autocomplete="family-name"></div>
