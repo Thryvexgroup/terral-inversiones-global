@@ -2,9 +2,29 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+// best-effort in-memory rate limit (per warm serverless instance; not shared across
+// instances, so it's a burst dampener, not a hard guarantee — good enough to stop casual
+// flooding of the inbox / Resend quota without adding an external store).
+const RL_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
+const RL_MAX = 5;                    // max submissions per IP per window
+const rlHits = new Map();            // ip -> [timestamps]
+function rateLimited(ip) {
+  const now = Date.now();
+  if (rlHits.size > 5000) rlHits.clear(); // crude memory cap
+  const arr = (rlHits.get(ip) || []).filter((t) => now - t < RL_WINDOW_MS);
+  arr.push(now);
+  rlHits.set(ip, arr);
+  return arr.length > RL_MAX;
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  if (rateLimited(ip)) {
+    return res.status(429).json({ error: 'Demasiadas solicitudes. Inténtelo de nuevo en unos minutos.' });
   }
 
   const b = req.body || {};
@@ -125,7 +145,7 @@ export default async function handler(req, res) {
 
   if (error) {
     console.error('Resend error:', JSON.stringify(error, null, 2));
-    return res.status(500).json({ error: 'Failed to send email', detail: error.message });
+    return res.status(500).json({ error: 'Failed to send email' });
   }
 
   return res.status(200).json({ success: true, id: data?.id });
