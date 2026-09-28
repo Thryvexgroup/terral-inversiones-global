@@ -1324,13 +1324,14 @@ body.in-load .hero-title .ti{transform:translateY(0);}
     var btn=f.querySelector('.cf-send'); if(btn)btn.disabled=true;
     if(note)note.textContent='Enviando…';
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,status:r.status,j:j};});})
       .then(function(res){
         if(res.ok){ f.reset(); if(cw)cw.hidden=true; if(cv)cv.hidden=true;
           var grid=f.closest('.contact-grid'); if(grid)grid.classList.add('sent');
           var suc=document.getElementById('cfsuccess');
           if(suc){ var y=Math.max(0,suc.getBoundingClientRect().top+window.scrollY-Math.max(120,(window.innerHeight-suc.offsetHeight)/2)); if(window.lenis){window.lenis.scrollTo(y,{duration:1});}else{window.scrollTo({top:y,behavior:'smooth'});} }
         }
+        else if(res.status===429){ if(note){note.textContent='Ha enviado varios mensajes en poco tiempo. Espere unos minutos e inténtelo de nuevo.';note.classList.add('err');} }
         else { if(note){note.textContent='No se pudo enviar. Escríbanos directamente a info@terral.global.';note.classList.add('err');} }
       })
       .catch(function(){ if(note){note.textContent='No se pudo enviar. Escríbanos directamente a info@terral.global.';note.classList.add('err');} })
