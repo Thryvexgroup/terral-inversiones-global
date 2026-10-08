@@ -2,10 +2,13 @@
   'use strict';
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var key = 'terral-intro-seen';
-  // Deep links and restored navigation should take visitors straight to their content.
-  if (motion.matches || location.hash) return;
+  var navigation = window.performance && window.performance.getEntriesByType
+    ? window.performance.getEntriesByType('navigation')[0] : null;
+  var isReload = navigation && navigation.type === 'reload';
+  // Reloads replay the entrance, including when the current URL has an anchor.
+  if (motion.matches || (location.hash && !isReload)) return;
   try {
-    if (sessionStorage.getItem(key)) return;
+    if (sessionStorage.getItem(key) && !isReload) return;
     sessionStorage.setItem(key, '1');
   } catch (_) { /* Storage restrictions must never prevent access to the site. */ }
   var curtain = document.createElement('div');
