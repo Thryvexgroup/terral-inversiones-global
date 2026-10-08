@@ -18,7 +18,9 @@
     return '<span class="terral-preloader__letter" style="--letter:' + index + '">' + letter + '</span>';
   }).join('') + '</span></span><span class="terral-preloader__dot">.</span></div>';
   document.body.prepend(curtain);
+  var finished = false;
   function finish() {
+    finished = true;
     curtain.remove();
     window.removeEventListener('keydown', finish);
     window.removeEventListener('pointerdown', finish);
@@ -33,5 +35,26 @@
   window.addEventListener('pointerdown', finish, { once: true });
   window.addEventListener('pagehide', finish, { once: true });
   motion.addEventListener('change', finish, { once: true });
-  setTimeout(finish, 2800);
+  function prepare() {
+    var fontReady = document.fonts
+      ? document.fonts.load('600 96px Zodiak').catch(function () {})
+      : Promise.resolve();
+    Promise.race([fontReady, new Promise(function (resolve) { setTimeout(resolve, 1200); })])
+      .then(function () {
+        // Two frames establish the blank cream curtain before the timeline starts.
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            if (finished) return;
+            curtain.classList.add('is-playing');
+            setTimeout(finish, 3200);
+          });
+        });
+      });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', prepare, { once: true });
+  } else {
+    prepare();
+  }
+  setTimeout(finish, 5500);
 }());
